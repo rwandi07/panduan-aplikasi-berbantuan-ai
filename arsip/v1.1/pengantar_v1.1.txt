@@ -1,0 +1,39 @@
+Saya ingin menggunakan dokumen **Universal AI-Assisted Application Development Workflow** yang saya lampirkan sebagai pedoman utama dalam berkolaborasi dengan AI untuk pengembangan aplikasi.
+
+Workflow ini bersifat universal dan dapat diterapkan pada berbagai jenis aplikasi, platform, bahasa pemrograman, maupun lingkungan pengembangan.
+
+Pelajari dan pahami seluruh isi dokumen, termasuk:
+
+1. **Pembagian pekerjaan dan tingkat kompleksitas** — Menentukan pekerjaan yang cocok dilakukan melalui percakapan biasa, AI dengan kemampuan pengembangan atau otomasi, serta pekerjaan yang memerlukan keterlibatan dan pengujian manual pengguna.
+2. **GitHub Discovery** — Meneliti aplikasi atau proyek open-source yang identik maupun mendekati ide aplikasi sebelum menentukan arsitektur dan pendekatan pengembangan.
+3. **Perencanaan dan pengembangan** — Menyusun spesifikasi, arsitektur, roadmap, implementasi, serta pengujian berdasarkan kebutuhan proyek.
+4. **System Audit** — Mengidentifikasi bug, kelemahan sistem, keterbatasan, dan potensi risiko teknis.
+5. **Register Temuan Berkelanjutan** — Mendokumentasikan temuan audit beserta bukti, tingkat kepastian, dampak, dan prioritasnya tanpa menganggap setiap temuan wajib diperbaiki.
+6. **Pengujian dan validasi** — Melakukan pengujian berdasarkan tingkat risiko, membedakan hasil pengujian yang benar-benar dilaksanakan dari yang belum dapat dilakukan.
+7. **Persetujuan dan pengendalian perubahan** — Memastikan pengembangan, audit diagnostik, dan perbaikan berdasarkan temuan tetap diperlakukan sebagai kegiatan yang berbeda.
+8. **Checkpoint dan handoff** — Menjaga kontinuitas pengembangan apabila pekerjaan dilanjutkan pada percakapan, sesi, atau AI yang berbeda.
+
+### Ketentuan awal
+
+- Jangan langsung menjalankan pengembangan, audit, mengubah kode, ataupun memodifikasi repositori hanya karena dokumen ini diberikan.
+- Perlakukan dokumen sebagai **pedoman kolaborasi dan tata kerja**, bukan sebagai instruksi untuk langsung mengeksekusi seluruh tahapannya.
+- Sesuaikan pelaksanaan workflow dengan kemampuan, akses, alat, dan keterbatasan nyata dari AI yang digunakan.
+- Jangan mengklaim telah melakukan pengujian, pemeriksaan, atau perubahan apabila tindakan tersebut belum benar-benar dilaksanakan.
+- Pertahankan pemisahan antara pengembangan aplikasi, audit diagnostik, dan perbaikan temuan. Perbaikan berdasarkan hasil audit hanya dilaksanakan setelah mendapatkan persetujuan saya.
+- Jangan menganggap seluruh kelemahan sistem harus diperbaiki. Bedakan bug yang sudah terbukti, potensi masalah, keterbatasan desain, dan peluang peningkatan.
+- Jangan melakukan perubahan besar pada pendekatan pengembangan tanpa menjelaskan konsekuensinya dan mendapatkan persetujuan.
+- Apabila terdapat bagian workflow yang tidak dapat dilaksanakan karena keterbatasan sistem, jelaskan kendalanya dan tawarkan alternatif yang realistis.
+- Gunakan konteks khusus proyek yang saya berikan secara terpisah. Jangan mengasumsikan semua proyek memiliki teknologi, kebutuhan, atau batasan yang sama.
+
+### Instruksi pertama
+
+Setelah mempelajari dokumen, berikan:
+
+1. Ringkasan pemahamanmu terhadap prinsip dan tahapan workflow.
+2. Penjelasan bagaimana workflow tersebut dapat diterapkan menggunakan kemampuan dan alat yang tersedia padamu.
+3. Bagian workflow yang tidak dapat kamu laksanakan secara langsung, jika ada.
+4. Konfirmasi bahwa kamu memahami batas kewenangan, mekanisme persetujuan, dan pemisahan kegiatan audit dari implementasi.
+
+**Jangan memulai proyek, melakukan GitHub Discovery, menjalankan audit, atau mengubah apa pun terlebih dahulu.**
+
+Tunggu instruksi saya selanjutnya untuk menentukan proyek dan pekerjaan yang akan dilakukan.
