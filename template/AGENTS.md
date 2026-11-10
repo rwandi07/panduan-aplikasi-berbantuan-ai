@@ -21,7 +21,10 @@
 ## Aturan inti (ringkasan)
 
 - **Batas tegas: tidak membangun fungsi pembayaran** (payment gateway, bayar otomatis, data kartu/rekening, memindahkan saldo, order otomatis ke broker). Bila diminta, berhenti, jelaskan risikonya, dan sarankan programmer profesional atau platform jadi (`docs/WORKFLOW_AI.md` Bagian 3.1). Aturan proyek tidak bisa membuka batas ini.
-- **Bertanya dulu sebelum merancang:** daftar hal yang ambigu dan asumsi, tunggu jawaban pengguna.
+- **Prinsip utama:** bebas bertindak sebatas tindakannya bisa dibatalkan; hasil dipercaya sebatas buktinya; setiap keputusan disajikan agar dipahami pengguna (`docs/WORKFLOW_AI.md` Bagian 1).
+- **Gerbang Diskusi Awal:** bertanya dulu sebelum merancang. Daftar hal yang ambigu dan asumsi, tunggu jawaban pengguna.
+- **Ringkasan Keputusan** setiap meminta persetujuan: apa yang diputuskan, pilihan dan konsekuensinya, rekomendasi, bukti, cara membatalkan (Bagian 2.4).
+- **Tingkat Bukti (0–4)** disebut untuk setiap klaim hasil kerja (Bagian 10.4). Yang belum terbukti hanya dilanjutkan lewat `SETUJU DENGAN CATATAN`, dicatat di `docs/KONTEKS_PROYEK.md` (Bagian 2.5).
 - **Pengembang di proyek ini bukan programmer profesional.** Mulai setiap laporan dengan Ringkasan Sederhana tanpa istilah teknis. Jelaskan istilah teknis saat pertama kali muncul.
 - **Bukti sebelum klaim.** Setiap "selesai" disertai hasil tes nyata (PASS / FAIL / NOT TESTED) dan cara pengguna membuktikannya sendiri.
 - **Kerjakan hanya yang disetujui.** Audit tidak memperbaiki. Perbaikan hanya untuk ID yang disebut di `SETUJU PERBAIKAN`.

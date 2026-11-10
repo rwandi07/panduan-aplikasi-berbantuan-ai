@@ -59,7 +59,7 @@ Contoh kriteria berhasil yang baik:
 
 > *"MODE: DISKUSI. Saya ingin membuat aplikasi [ide]. Bantu saya merapikan kebutuhannya: siapa penggunanya, fitur wajib, fitur tambahan, batasan, dan kriteria berhasil dengan bahasa saya."*
 
-AI seharusnya **bertanya dulu** sebelum merancang: apa saja yang masih belum jelas, dan asumsi apa yang akan dipakai kalau kamu tidak menjawab. Jawab pertanyaannya. Kesalahpahaman di awal adalah penyebab kerja ulang yang paling mahal.
+Ini disebut **Diskusi Awal**. AI seharusnya **bertanya dulu** sebelum merancang: apa saja yang masih belum jelas, dan asumsi apa yang akan dipakai kalau kamu tidak menjawab. Jawab pertanyaannya. Kesalahpahaman di awal adalah penyebab kerja ulang yang paling mahal.
 
 **Gerbang:** kamu setuju dengan ringkasan kebutuhan dan kriteria berhasilnya, dan pertanyaan AI sudah terjawab.
 
@@ -91,7 +91,9 @@ Lalu tanggapi: *"Saya suka warna yang nomor 2, tapi tata letak yang nomor 1."* L
 
 > *"Usulkan teknologi yang cocok untuk aplikasi ini dan untuk laptop saya (lihat profil). Jelaskan dengan bahasa awam kenapa memilih itu, dan apa risikonya. Buat roadmap bertahap, setiap tahap dengan kriteria selesai dan cara membuktikannya."*
 
-**Gerbang:** kamu mengetik `SETUJU RANCANGAN`.
+Sebelum kamu menyetujui, AI wajib memberi **Ringkasan Keputusan**: apa yang diputuskan, pilihan dan konsekuensinya, rekomendasinya, bukti yang ada, dan cara membatalkan kalau keliru. Kalau ada yang tidak kamu pahami, jangan setujui dulu. Tanyakan, atau ketik `JELASKAN SEDERHANA`. Persetujuan tanpa pemahaman hanya formalitas.
+
+**Gerbang:** kamu memahami Ringkasan Keputusan-nya, lalu mengetik `SETUJU RANCANGAN`.
 
 ---
 
@@ -109,7 +111,7 @@ Kalau AI memintamu memasang sesuatu dan kamu ragu laptopmu kuat:
 
 ## Langkah 5 — Tes dan buktikan
 
-Jangan terima "sudah selesai" begitu saja. Minta bukti yang bisa kamu jalankan sendiri.
+Jangan terima "sudah selesai" begitu saja. Minta bukti yang bisa kamu jalankan sendiri, dan perhatikan **Tingkat Bukti** yang disebut AI (0 sampai 4). Kalau ada tes yang tidak bisa kamu lakukan, misalnya butuh perangkat yang tidak kamu punya, gunakan `SETUJU DENGAN CATATAN`. Penjelasannya di [tes-sendiri.md](tes-sendiri.md).
 
 > *"Tambahkan pemeriksaan untuk fitur ini ke validator. Saya akan menjalankannya dan mengirim log-nya."*
 

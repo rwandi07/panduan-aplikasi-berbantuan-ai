@@ -56,7 +56,7 @@ Bantu saya merapikan kebutuhannya: siapa penggunanya, fitur wajib, fitur tambaha
 dan kriteria berhasil dengan bahasa saya. Usulkan juga jalur Ringan atau Lengkap beserta alasannya.
 ```
 
-### Meminta AI bertanya dulu
+### Diskusi Awal: meminta AI bertanya dulu
 
 ```text
 Sebelum merancang apa pun, daftar dulu hal yang masih ambigu dan asumsi yang akan kamu pakai.
@@ -92,6 +92,13 @@ Lalu buat 2–3 mockup dengan gaya berbeda. Ikuti Kamus UI. Saya ingin tampilann
 Usulkan teknologi yang cocok untuk aplikasi ini dan untuk perangkat saya (lihat profil).
 Jelaskan dengan bahasa awam kenapa memilih itu dan apa risikonya.
 Buat roadmap bertahap, setiap tahap dengan kriteria selesai dan cara membuktikannya.
+```
+
+### Meminta Ringkasan Keputusan sebelum menyetujui
+
+```text
+Sebelum saya setujui, beri Ringkasan Keputusan: apa yang diputuskan, pilihan dan konsekuensinya,
+rekomendasimu, bukti dan Tingkat Bukti-nya, apa yang bisa salah, dan cara membatalkannya.
 ```
 
 ### Menyetujui
@@ -134,6 +141,20 @@ Hasilnya harus BERHASIL/GAGAL dengan pesan bahasa awam, dan log tersimpan otomat
 ```text
 Validator GAGAL. Ini log-nya: [lampirkan file log].
 Jelaskan sederhana apa penyebabnya, lalu usulkan perbaikan. Jangan perbaiki sebelum saya setuju.
+```
+
+### Menanyakan kekuatan bukti
+
+```text
+Untuk setiap fitur yang kamu bilang sudah berfungsi, sebutkan Tingkat Bukti-nya (0–4)
+dan apa yang masih belum terbukti.
+```
+
+### Tes yang tidak bisa saya lakukan
+
+```text
+SETUJU DENGAN CATATAN. Saya tidak bisa mengetes [jelaskan, misalnya: kirim file antar dua laptop]
+karena [alasan]. Cari dulu bukti pengganti yang bisa saya jalankan, lalu susun Catatan Persetujuan.
 ```
 
 ### Checklist tes manual

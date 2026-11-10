@@ -3,6 +3,8 @@
 ### Human-Controlled AI Development Framework
 
 > **AI mengerjakan, manusia mengendalikan.** AI menulis kode, menjalankan tes, dan mencatat. Keputusan produk, persetujuan perubahan, dan rilis tetap di tanganmu.
+>
+> Prinsip utamanya: AI boleh bekerja sebebas mungkin selama tindakannya bisa dibatalkan, hasilnya dipercaya sebatas buktinya, dan setiap keputusan yang diminta darimu disajikan dengan penjelasan, pilihan, dan konsekuensi yang bisa kamu pahami. Tujuannya mengurangi pekerjaanmu **tanpa** mengurangi pemahaman dan kendalimu.
 
 Panduan ini untuk kamu yang **membuat aplikasi dengan bantuan AI** (ChatGPT, Claude, Gemini, Codex, dan sejenisnya), tetapi **bukan programmer profesional**.
 
@@ -80,6 +82,7 @@ Prompt untuk tahap-tahap lain ada di [panduan/kumpulan-prompt.md](panduan/kumpul
 | `MODE: AUDIT` | Cari masalah, tapi jangan perbaiki |
 | `SETUJU RANCANGAN` | Rancangan terakhir boleh dibangun |
 | `SETUJU PERBAIKAN: BUG-001` | Hanya temuan itu yang boleh diperbaiki |
+| `SETUJU DENGAN CATATAN` | Lanjutkan walau ada tes yang belum bisa kamu lakukan; AI mencatat apa yang belum terbukti |
 | `STATUS PROYEK` | Minta laporan posisi proyek |
 | `HANDOFF PROYEK` | Minta catatan serah-terima sebelum pindah chat atau AI |
 | `JELASKAN SEDERHANA` | Minta penjelasan ulang dengan bahasa awam |

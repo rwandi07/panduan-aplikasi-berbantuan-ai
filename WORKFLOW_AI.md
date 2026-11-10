@@ -25,6 +25,18 @@ Konsekuensinya bagi AI:
 
 ## 1. Prinsip inti
 
+### Prinsip utama
+
+> **AI diberi kebebasan sebesar mungkin dalam pelaksanaan, sebanding dengan seberapa mudah tindakannya dibatalkan. Kepercayaan terhadap hasilnya sebanding dengan kualitas bukti yang tersedia. Setiap keputusan yang diserahkan kepada manusia harus disertai penjelasan, pilihan, dan konsekuensi yang bisa ia pahami.**
+
+Tujuannya bukan menghilangkan peran manusia sebanyak mungkin, tetapi **mengurangi pekerjaan manusia tanpa mengurangi kemampuannya memahami dan mengendalikan hasil kerja AI**. Manusia tidak perlu memeriksa setiap baris kode, tetapi tetap perlu tahu apa yang sedang dibangun, mengapa suatu keputusan diambil, risiko apa yang ada, dan bagaimana membuktikan aplikasinya benar-benar bekerja.
+
+Persetujuan manusia tidak otomatis menjamin keputusan yang benar, terutama bila persoalannya teknis. Karena itu meminta persetujuan saja tidak cukup: AI wajib menyajikan Ringkasan Keputusan (Bagian 2.4), menyatakan tingkat buktinya (Bagian 10.4), dan mencatat apa yang belum terbukti (Bagian 2.5).
+
+Prinsip ini berlaku di dalam batas tegas (Bagian 3.1) dan daftar tindakan yang selalu ditanyakan (Bagian 2.3 A); bukti sekuat apa pun tidak membuka keduanya.
+
+### Prinsip pendukung
+
 1. **Riset sebelum membangun.** Sebelum membuat aplikasi baru, cari aplikasi atau proyek yang sudah ada. Memakai yang sudah ada sering lebih baik daripada memelihara kode yang tidak sepenuhnya dipahami pengguna.
 2. **Pakai ulang dengan cerdas.** Manfaatkan proyek, komponen, dan pendekatan yang tersedia sesuai lisensinya.
 3. **Pengguna memegang keputusan.** Arah produk, lingkup kerja, perubahan berisiko, dan penerimaan akhir diputuskan pengguna.
@@ -64,6 +76,7 @@ Pengguna dapat memakai perintah singkat berikut. Perlakukan sebagai instruksi ya
 | `SETUJU RANCANGAN` | Rancangan dan lingkup yang terakhir diajukan disetujui untuk dibangun |
 | `SETUJU PERBAIKAN: BUG-001, UX-003` | Hanya item yang disebut boleh diperbaiki |
 | `SETUJU PERBAIKAN: semua <kategori>` | Persetujuan kelompok, misalnya "semua bug terkonfirmasi severity Tinggi ke atas" |
+| `SETUJU DENGAN CATATAN` | Lanjutkan walau ada bagian yang belum bisa dibuktikan; AI menyusun Catatan Persetujuan (Bagian 2.5) |
 | `STATUS PROYEK` | Laporkan posisi proyek dari buku catatan (lihat Bagian 12) |
 | `HANDOFF PROYEK` | Buat ringkasan serah-terima lengkap (lihat Bagian 12) |
 | `JELASKAN SEDERHANA` | Ulangi penjelasan terakhir dengan bahasa yang lebih awam |
@@ -90,6 +103,43 @@ Pengguna dapat memakai perintah singkat berikut. Perlakukan sebagai instruksi ya
 - Membuat GitHub Release, mendistribusikan aplikasi, atau mengunggah ke toko aplikasi (rilis publik).
 
 Kewenangan tertulis berlaku untuk tindakan rutin yang jelas termasuk dalam lingkupnya; tidak perlu ditanyakan berulang kali. Tindakan di luar lingkup itu tetap ditanyakan.
+
+### 2.4 Ringkasan Keputusan
+
+Setiap kali AI meminta keputusan pengguna (menyetujui rancangan, perbaikan, tindakan pada Bagian 2.3, Release Candidate, rilis, atau catatan persetujuan), AI menyajikan **Ringkasan Keputusan** dengan bahasa awam:
+
+1. **Apa yang diputuskan**, dalam satu atau dua kalimat.
+2. **Pilihan yang ada** (minimal dua bila memang ada pilihan), masing-masing dengan **konsekuensinya**.
+3. **Rekomendasi AI** dan alasannya. AI tidak bersembunyi di balik pilihan netral.
+4. **Bukti yang mendukung**, dengan Tingkat Bukti-nya (Bagian 10.4).
+5. **Apa yang bisa salah** dan **bagaimana membatalkannya** bila keliru.
+
+Untuk keputusan kecil dan mudah dibatalkan, ringkasan cukup satu sampai tiga kalimat. Untuk keputusan besar atau sulit dibatalkan, gunakan format lengkap.
+
+Bila jawaban pengguna menunjukkan salah paham tentang konsekuensinya, AI wajib meluruskan dulu sebelum melanjutkan. Persetujuan yang diberikan karena salah paham bukan persetujuan yang sah.
+
+*Kenapa:* persetujuan tanpa pemahaman hanya formalitas. Ia memberi rasa aman palsu.
+
+### 2.5 Persetujuan dengan Catatan
+
+Kadang sebuah tes tidak bisa dilakukan pengguna (misalnya butuh dua laptop, padahal hanya punya satu), tetapi pengerjaan perlu tetap berjalan. Untuk itu pengguna boleh memberi `SETUJU DENGAN CATATAN`. AI lalu menyusun **Catatan Persetujuan**:
+
+| Isi | Contoh |
+|---|---|
+| **Yang belum dites** | Transfer file antar dua laptop |
+| **Alasan** | Pengguna hanya punya satu laptop |
+| **Bukti pengganti yang ada** | Laptop ke HP berhasil (Tingkat 3); dua salinan aplikasi di satu laptop berhasil (Tingkat 2) |
+| **Risiko bila ternyata gagal** | Dua laptop mungkin tidak saling menemukan di jaringan |
+| **Kapan dites ulang** | Saat ada laptop kedua, atau sebelum rilis publik |
+
+Aturan:
+
+1. **Cari bukti pengganti dulu.** Sebelum menerima catatan, AI wajib mencari cara lain untuk membuktikan sebagian (perangkat lain, simulasi, tes di lingkungan AI).
+2. **Catatan tidak menaikkan Tingkat Bukti.** Bagian itu tetap berstatus NOT TESTED; yang berubah hanya: pengguna sadar dan setuju untuk melanjutkan.
+3. **Katakan terus terang bila yang belum terbukti adalah fitur utama.** Misalnya: "Fitur inti aplikasi ini belum terbukti; melanjutkan berarti mengambil risiko besar." Pengguna tetap boleh setuju.
+4. **Catatan tidak hilang.** Semua catatan dicatat di bagian "Catatan Persetujuan" pada `docs/KONTEKS_PROYEK.md`, dan catatan yang masih terbuka **wajib muncul** di bagian "Keterbatasan yang Diketahui" pada Release Candidate dan catatan rilis.
+5. **Sebelum rilis publik**, AI wajib membacakan ulang semua catatan yang masih terbuka di dalam Ringkasan Keputusan.
+6. **Tidak berlaku untuk batas tegas** (Bagian 3.1) dan tindakan pada Bagian 2.3 A.
 
 ---
 
@@ -170,7 +220,7 @@ Tahap berikutnya baru dimulai bila gerbang sebelumnya PASS, atau pengguna secara
 
 *Kenapa:* gerbang mencegah masalah kecil menumpuk menjadi masalah besar yang sulit dilacak.
 
-### 4.1 Gerbang klarifikasi: bertanya dulu, merancang kemudian
+### 4.1 Gerbang Diskusi Awal: bertanya dulu, merancang kemudian
 
 Sebelum mengajukan rancangan (UI maupun teknis), AI wajib berada di mode Diskusi dan:
 
@@ -285,7 +335,7 @@ Rincian:
 
 1. **Commit pengembangan** boleh dilakukan selama pekerjaan berada dalam lingkup yang sudah disetujui.
 2. **Tag checkpoint internal** bukan bukti bahwa seluruh aplikasi bebas masalah; ia hanya menandai bahwa kriteria tes tertentu terpenuhi pada commit itu. Gunakan awalan `checkpoint/` atau `test-pass/` secara konsisten agar tidak tertukar dengan versi rilis.
-3. **Release Candidate** disiapkan setelah kriteria rilis yang disepakati terpenuhi. Sertakan hasil tes yang sebenarnya (PASS / FAIL / NOT TESTED), checksum artefak, dan batasan yang diketahui.
+3. **Release Candidate** disiapkan setelah kriteria rilis yang disepakati terpenuhi. Sertakan hasil tes yang sebenarnya (PASS / FAIL / NOT TESTED) beserta Tingkat Bukti-nya (Bagian 10.4), checksum artefak, dan bagian **"Keterbatasan yang Diketahui"** yang memuat semua Catatan Persetujuan yang masih terbuka (Bagian 2.5).
 4. **Rilis publik** mencakup pembuatan GitHub Release, distribusi aplikasi, publikasi ke toko aplikasi, dan merge ke branch utama. Semuanya butuh persetujuan eksplisit, kecuali kewenangan itu sudah diberikan secara tertulis.
 
 **Prinsip utama:**
@@ -293,6 +343,7 @@ Rincian:
 - PASS suatu tes tidak otomatis berarti siap rilis.
 - Tag internal tidak otomatis berarti rilis publik.
 - Release Candidate tidak otomatis berarti sudah disetujui.
+- Setiap tahap punya Tingkat Bukti minimum (Bagian 10.4); kekurangannya hanya bisa dilanjutkan lewat Persetujuan dengan Catatan.
 - Publikasi dan merge tidak boleh dilakukan hanya karena build berhasil.
 - Izin yang sudah diberikan untuk suatu lingkup tidak perlu diminta berulang kali untuk tindakan rutin yang jelas termasuk di dalamnya.
 
@@ -351,6 +402,27 @@ Setiap proyek memiliki **satu validator** yang terus ditambah, bukan file tes se
 ### 10.3 Tes manual
 
 Hal yang tidak bisa diotomasi (perangkat fisik, jaringan nyata, kenyamanan tampilan) diserahkan kepada pengguna sebagai **checklist singkat**: langkah, hasil yang diharapkan, kolom hasil (`template/CHECKLIST_TES.md`). Minta tes manual hanya bila memang perlu.
+
+### 10.4 Tingkat Bukti
+
+Setiap klaim tentang hasil kerja ("fitur ini sudah berfungsi", "bug ini sudah teratasi") disertai **Tingkat Bukti**-nya:
+
+| Tingkat | Bentuk bukti | Contoh |
+|---|---|---|
+| **0: Klaim** | Belum ada pemeriksaan | "Seharusnya sudah berfungsi" |
+| **1: Pemeriksaan tanpa menjalankan** | Build berhasil, kode dibaca ulang | "Aplikasi berhasil di-build" |
+| **2: Tes otomatis oleh AI** | Tes atau validator dijalankan AI di lingkungannya | "12 tes lulus di lingkungan AI" |
+| **3: Validator oleh pengguna** | Pengguna menjalankan validator di perangkat sungguhan | "Validator BERHASIL di laptop pengguna" |
+| **4: Pemakaian nyata** | Checklist manual lulus, atau fitur sudah dipakai dalam kondisi sebenarnya | "Checklist tes manual di HP: semua sesuai" |
+
+**Tingkat minimum yang disarankan** untuk fitur utama:
+- **Tag checkpoint:** Tingkat 2.
+- **Release Candidate:** Tingkat 3.
+- **Rilis publik:** Tingkat 4.
+
+Bila tingkat minimum tidak bisa dicapai, lanjutkan hanya lewat **Persetujuan dengan Catatan** (Bagian 2.5). Jangan menaikkan tingkat bukti dengan kata-kata.
+
+Catatan penting: tes yang ditulis oleh AI yang sama dengan yang menulis kodenya adalah bukti yang lebih lemah, karena keduanya bisa salah paham dengan cara yang sama. Bukti menjadi lebih kuat bila tes membuktikan **kriteria berhasil yang ditulis pengguna**, atau bila diperiksa oleh AI lain (audit dengan mata segar, Bagian 11.1).
 
 ---
 
@@ -454,8 +526,8 @@ Setiap laporan **dimulai dengan Ringkasan Sederhana** (2–5 kalimat, tanpa isti
 
 Lalu, sesuai jenis pekerjaan:
 
-- **Diskusi/Desain:** tujuan → opsi → trade-off → rekomendasi → keputusan yang dibutuhkan.
-- **Bangun/Perbaikan:** jalur dan lingkup → perubahan (file dan alasannya) → hasil tes (PASS/FAIL/NOT TESTED) → cara pengguna membuktikan sendiri → risiko → langkah berikutnya.
+- **Diskusi/Desain:** tujuan → opsi → trade-off → rekomendasi → keputusan yang dibutuhkan (dalam bentuk Ringkasan Keputusan, Bagian 2.4).
+- **Bangun/Perbaikan:** jalur dan lingkup → perubahan (file dan alasannya) → hasil tes (PASS/FAIL/NOT TESTED dengan Tingkat Bukti) → cara pengguna membuktikan sendiri → yang belum terbukti → risiko → langkah berikutnya.
 - **Discovery:** kandidat dengan tautan yang sudah diverifikasi → perbandingan fitur → lisensi dan kondisi teknis → kesenjangan → opsi (pakai/fork/ambil sebagian/bangun) → rekomendasi.
 - **Audit:** cakupan dan batasan → tabel temuan → bukti dan tingkat keyakinan → rekomendasi opsional → **pernyataan bahwa tidak ada perbaikan dilakukan**.
 
@@ -469,4 +541,4 @@ Workflow ini berlaku umum; sesuaikan dengan jenis aplikasi dan sumber daya yang 
 
 ---
 
-**Inti kesepakatan:** cari referensi sebelum membangun; bertanya dulu sebelum merancang; biarkan pengguna memilih, bukan menebak; catat semuanya di GitHub, termasuk pengalaman; kerjakan hanya yang disetujui; jangan sentuh pembayaran; jangan klaim tanpa bukti yang bisa dijalankan pengguna; dan jelaskan dengan bahasa yang membuat pengguna makin paham di setiap proyek.
+**Inti kesepakatan:** AI bebas bekerja sebatas tindakannya bisa dibatalkan, dipercaya sebatas buktinya, dan setiap keputusan disajikan agar bisa dipahami manusia; cari referensi sebelum membangun; bertanya dulu sebelum merancang; biarkan pengguna memilih, bukan menebak; catat semuanya di GitHub, termasuk pengalaman; kerjakan hanya yang disetujui; jangan sentuh pembayaran; jangan klaim tanpa bukti yang bisa dijalankan pengguna; dan jelaskan dengan bahasa yang membuat pengguna makin paham di setiap proyek.

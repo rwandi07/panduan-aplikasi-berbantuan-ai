@@ -55,7 +55,16 @@
 - **Tanggal dan lingkungan:** (perangkat, sistem operasi, versi)
 - **Validator:** BERHASIL / GAGAL (lokasi log:)
 - **Checklist manual:** PASS / FAIL / NOT TESTED
-- **Yang belum dites dan alasannya:**
+- **Tingkat Bukti fitur utama (0–4):**
+- **Yang belum dites dan alasannya:** (rujuk ke Catatan Persetujuan di bawah bila ada)
+
+### Catatan Persetujuan
+
+> Hal yang belum terbukti tetapi disetujui untuk dilanjutkan (`SETUJU DENGAN CATATAN`). Catatan yang masih terbuka wajib muncul di "Keterbatasan yang Diketahui" pada Release Candidate dan catatan rilis.
+
+| No | Yang belum dites | Alasan | Bukti pengganti (Tingkat) | Risiko bila gagal | Kapan dites ulang | Status |
+|---|---|---|---|---|---|---|
+| CP-001 | | | | | | Terbuka / Selesai (tanggal) |
 
 ## 8. Temuan terbuka yang penting
 
