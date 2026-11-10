@@ -21,7 +21,7 @@ Programmer profesional tidak mengandalkan ingatan. Mereka mencatat semuanya: kod
 | **main** | Buku utama | Versi yang dianggap resmi |
 | **Merge** | Menyalin coretan ke buku utama | Dilakukan setelah perubahan terbukti berhasil |
 | **Tag / Release** | Pembatas halaman | "Versi ini sudah dites dan berhasil" |
-| **Folder `docs/`** | Catatan keputusan | Konteks proyek, temuan, serah-terima |
+| **Folder `docs/`** | Catatan keputusan | Konteks proyek, temuan, serah-terima, pengalaman |
 | **AGENTS.md / CLAUDE.md** | Halaman "baca ini dulu" untuk AI | Aturan dan konteks yang dibaca AI sebelum bekerja |
 | **.gitignore** | Daftar "jangan dicatat" | File rahasia atau sampah yang tidak boleh masuk buku |
 | **Issues** | Kotak saran | Tempat mencatat masalah atau ide |
@@ -68,12 +68,13 @@ docs/
   WORKFLOW_AI.md        ← salinan aturan kerja untuk AI
   KONTEKS_PROYEK.md     ← status proyek dan serah-terima
   REGISTER_TEMUAN.md    ← temuan audit (jalur lengkap)
+  PENGALAMAN.md         ← Eksplorasi Pengalaman: pelajaran agar tidak terulang
 VALIDASI.bat / validasi.sh   ← tes yang bisa kamu jalankan sendiri
 ```
 
 Kamu tidak perlu membuatnya sendiri. Minta AI:
 
-> *"Siapkan struktur buku catatan sesuai panduan: README, AGENTS.md, CHANGELOG, BUILD, .gitignore, docs/WORKFLOW_AI.md, dan docs/KONTEKS_PROYEK.md."*
+> *"Siapkan struktur buku catatan sesuai panduan: README, AGENTS.md, CHANGELOG, BUILD, .gitignore, docs/WORKFLOW_AI.md, docs/KONTEKS_PROYEK.md, dan docs/PENGALAMAN.md."*
 
 ---
 

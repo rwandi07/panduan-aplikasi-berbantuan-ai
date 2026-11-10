@@ -37,6 +37,13 @@
 - **Batasan:** (contoh: tidak memakai GitHub Actions; tidak mau layanan berbayar; internet terbatas)
 - **Preferensi:** (contoh: tes yang bisa saya jalankan dengan klik dua kali; jelaskan dulu sebelum memasang apa pun)
 
+## Pengalaman lintas proyek
+
+> Pelajaran dari `docs/PENGALAMAN.md` proyek mana pun yang berlaku untuk semua proyek. AI membaca bagian ini di setiap proyek baru.
+
+- (contoh: Emulator Android terlalu berat di laptop saya; selalu tes di HP.)
+- (contoh: Library X sering bermasalah di Windows saya; pilih alternatif Y.)
+
 ## Identitas visual
 
 - **Punya identitas visual?** (ya / tidak). Bila ya, lampirkan `BRAND.md` juga.

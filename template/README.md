@@ -8,6 +8,7 @@ Formulir siap pakai. Salin ke tempat yang disebutkan, lalu isi.
 | [AGENTS.md](AGENTS.md) | Root repo aplikasi | Halaman "baca ini dulu" untuk agen coding |
 | [KONTEKS_PROYEK.md](KONTEKS_PROYEK.md) | `docs/KONTEKS_PROYEK.md` di repo aplikasi | Status proyek dan catatan serah-terima |
 | [REGISTER_TEMUAN.md](REGISTER_TEMUAN.md) | `docs/REGISTER_TEMUAN.md` di repo aplikasi | Hasil audit (jalur lengkap) |
+| [PENGALAMAN.md](PENGALAMAN.md) | `docs/PENGALAMAN.md` di repo aplikasi | Eksplorasi Pengalaman: pelajaran agar kesalahan tidak terulang |
 | [CHECKLIST_TES.md](CHECKLIST_TES.md) | Dipakai setiap tes manual | Langkah, hasil yang diharapkan, hasil nyata |
 | [BRAND.md](BRAND.md) | Repo pribadimu, dirujuk dari repo aplikasi | Identitas visual (opsional) |
 
@@ -15,4 +16,6 @@ Salin juga [WORKFLOW_AI.md](../WORKFLOW_AI.md) ke `docs/WORKFLOW_AI.md` di setia
 
 Cara tercepat: minta AI-mu
 
-> *"Siapkan repo ini sesuai Panduan Pengembangan Aplikasi Berbantuan AI: salin WORKFLOW_AI.md ke docs/, buat AGENTS.md, docs/KONTEKS_PROYEK.md, README, CHANGELOG, dan .gitignore dari template."*
+> *"Siapkan repo ini sesuai Panduan Pengembangan Aplikasi Berbantuan AI: salin WORKFLOW_AI.md ke docs/, buat AGENTS.md, docs/KONTEKS_PROYEK.md, docs/PENGALAMAN.md, README, CHANGELOG, dan .gitignore dari template."*
+
+Untuk aplikasi yang sudah ada, gunakan prompt Jalur Adopsi di [../panduan/kumpulan-prompt.md](../panduan/kumpulan-prompt.md).

@@ -2,7 +2,7 @@
 
 Halaman ini menuntunmu melewati satu proyek dari awal sampai akhir. Di setiap langkah ada **contoh kalimat** yang bisa kamu tiru saat bicara dengan AI.
 
-Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tidak perlu menghafalnya; cukup lampirkan ke AI.
+Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tidak perlu menghafalnya; cukup lampirkan ke AI. Semua contoh kalimat di halaman ini juga dikumpulkan di [kumpulan-prompt.md](kumpulan-prompt.md).
 
 ---
 
@@ -32,6 +32,21 @@ Tidak semua aplikasi butuh proses penuh.
 
 > *"Ini ide aplikasinya: [jelaskan]. Menurutmu jalur Ringan atau Lengkap? Jelaskan alasannya."*
 
+### Aplikasi lama: Jalur Adopsi
+
+Kalau aplikasinya sudah ada sebelum kamu memakai panduan ini, jangan perlakukan seperti proyek baru. Memaksa kode lama mengikuti panduan justru berisiko merusak yang sudah berjalan. Terapkan sebagian saja:
+
+1. Tandai versi sekarang sebagai titik awal.
+2. AI mengisi `docs/KONTEKS_PROYEK.md` dari hal yang bisa ia pastikan; sisanya "belum diketahui".
+3. Buat validator untuk fitur yang sekarang berjalan, sebagai patokan.
+4. Pekerjaan **baru** setelah itu mengikuti panduan.
+
+Langkah Discovery dan rancangan awal dilewati, karena aplikasinya sudah ada. Prompt-nya ada di [kumpulan-prompt.md](kumpulan-prompt.md).
+
+### Satu hal yang tidak dikerjakan: pembayaran
+
+Panduan ini tidak dipakai untuk membangun fungsi pembayaran: payment gateway, bayar otomatis, menyimpan data kartu, memindahkan saldo, atau order otomatis ke broker. AI akan berhenti dan menjelaskan alasannya. Baca [batas-pembayaran.md](batas-pembayaran.md).
+
 ---
 
 ## Langkah 1 — Ide dan kebutuhan
@@ -44,7 +59,9 @@ Contoh kriteria berhasil yang baik:
 
 > *"MODE: DISKUSI. Saya ingin membuat aplikasi [ide]. Bantu saya merapikan kebutuhannya: siapa penggunanya, fitur wajib, fitur tambahan, batasan, dan kriteria berhasil dengan bahasa saya."*
 
-**Gerbang:** kamu setuju dengan ringkasan kebutuhan dan kriteria berhasilnya.
+AI seharusnya **bertanya dulu** sebelum merancang: apa saja yang masih belum jelas, dan asumsi apa yang akan dipakai kalau kamu tidak menjawab. Jawab pertanyaannya. Kesalahpahaman di awal adalah penyebab kerja ulang yang paling mahal.
+
+**Gerbang:** kamu setuju dengan ringkasan kebutuhan dan kriteria berhasilnya, dan pertanyaan AI sudah terjawab.
 
 ---
 
@@ -132,15 +149,44 @@ Setelah membaca hasilnya, kamu yang memilih:
 
 Ingat: tidak semua temuan harus diperbaiki. Ada kelemahan yang wajar diterima.
 
+### Audit dengan mata segar (opsional)
+
+AI yang ikut membangun cenderung tidak melihat kesalahannya sendiri. Kalau kamu punya lebih dari satu jenis AI (misalnya membangun dengan satu AI, berlangganan AI lain juga), minta AI yang **tidak ikut membangun** untuk mengaudit di antara tahap besar. Kalau hanya punya satu AI, buka percakapan baru tanpa riwayat pembangunan. Hasilnya tidak sebaik AI yang berbeda, tapi tetap memberi sudut pandang baru. Prompt-nya ada di [kumpulan-prompt.md](kumpulan-prompt.md).
+
 ---
 
-## Pindah chat atau pindah AI
+## Kapan mulai percakapan baru
 
-Percakapan AI punya batas panjang, dan kamu mungkin ingin berganti AI. Sebelum pindah:
+Percakapan yang terlalu panjang membuat AI mudah lupa dan keliru. Pegang prinsip ini: **satu tugas besar, satu percakapan.**
 
-> *"HANDOFF PROYEK."*
+Mulai percakapan baru kalau kamu melihat salah satu tanda ini:
+1. AI sudah **3 kali gagal** memperbaiki masalah yang sama.
+2. AI **lupa atau bertentangan** dengan keputusan yang sudah disepakati.
+3. AI **salah menyebut nama file**, atau mengulang kesalahan yang sudah diperbaiki.
+4. Percakapan sudah **sangat panjang** atau balasan terasa melambat.
+5. Kamu **pindah ke tugas yang berbeda**.
 
-AI akan memperbarui `docs/KONTEKS_PROYEK.md`. Di chat baru, cukup minta AI membaca file itu. Karena semuanya tercatat di GitHub, kamu tidak perlu menjelaskan ulang dari nol.
+AI yang mengikuti panduan ini juga akan menyarankannya sendiri. Caranya:
+
+1. Di percakapan lama: *"HANDOFF PROYEK."* AI memperbarui `docs/KONTEKS_PROYEK.md`.
+2. Di percakapan baru: minta AI membaca `docs/KONTEKS_PROYEK.md` dan `docs/PENGALAMAN.md`, lalu jawab `STATUS PROYEK`.
+
+Karena semuanya tercatat di GitHub, kamu tidak perlu menjelaskan ulang dari nol. Cara yang sama berlaku kalau kamu ingin **berganti AI**.
+
+---
+
+## Eksplorasi Pengalaman
+
+Programmer berpengalaman bukan orang yang tidak pernah salah, tapi orang yang tidak mengulang kesalahan yang sama. Setiap proyek punya file `docs/PENGALAMAN.md` untuk mencatat:
+- masalah sulit yang akhirnya terpecahkan;
+- cara yang dicoba tapi gagal;
+- kejutan, misalnya alat atau perangkat yang tidak berperilaku seperti perkiraan.
+
+Setiap catatan berisi: apa yang terjadi, penyebabnya, cara menghindarinya, dan apakah berlaku untuk proyek lain.
+
+> *"CATAT PENGALAMAN. Masalah [jelaskan] tadi akhirnya selesai."*
+
+Pengalaman yang berlaku untuk semua proyek, misalnya "di laptop saya, emulator Android selalu terlalu berat", pindahkan ke **Profil Pengembang**-mu supaya ikut dibaca AI di proyek berikutnya.
 
 ---
 

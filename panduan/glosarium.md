@@ -9,6 +9,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **APK** | File pemasang aplikasi Android. |
 | **Artefak** | Hasil akhir build yang bisa dipasang atau dibagikan, misalnya file APK atau EXE. |
 | **Audit** | Pemeriksaan untuk mencari bug, kelemahan, dan risiko, **tanpa** memperbaikinya. |
+| **Autodebet / bayar otomatis** | Izin sekali kepada aplikasi untuk menagih berulang tanpa konfirmasi lagi. Di luar cakupan panduan ini; lihat [batas-pembayaran.md](batas-pembayaran.md). |
 | **Backend** | Bagian aplikasi yang bekerja "di belakang layar", misalnya server yang menyimpan data. |
 | **Branch** | "Kertas coretan" di repo. Tempat mencoba perubahan tanpa mengganggu versi utama. |
 | **Bug** | Kesalahan yang membuat aplikasi berperilaku tidak sesuai harapan. |
@@ -18,6 +19,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Commit** | Satu entri bertanggal di buku catatan (repo): perubahan apa dan kenapa. |
 | **Dependensi** | Program atau library lain yang dibutuhkan aplikasimu untuk berjalan. |
 | **Discovery** | Tahap mencari dan mempelajari aplikasi atau proyek yang sudah ada sebelum membangun sendiri. |
+| **Eksplorasi Pengalaman** | Catatan di `docs/PENGALAMAN.md` tentang masalah yang pernah terjadi, penyebabnya, dan cara menghindarinya, agar tidak terulang. |
 | **Emulator** | Program yang meniru HP di komputer. Praktis, tapi berat untuk komputer dengan RAM kecil. |
 | **.env** | File berisi pengaturan dan rahasia (misalnya API key). Tidak boleh masuk repo. |
 | **EXE** | File program Windows. |
@@ -28,7 +30,9 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **.gitignore** | Daftar file yang sengaja tidak dicatat di repo, misalnya file rahasia dan file hasil build. |
 | **GPU / kartu grafis** | Komponen komputer yang mempercepat pekerjaan grafis dan AI. Banyak alat AI berjalan lambat tanpa GPU yang sesuai. |
 | **Handoff** | Catatan serah-terima supaya pekerjaan bisa dilanjutkan di chat atau AI lain. |
+| **Jalur Adopsi** | Cara menerapkan panduan ini secara sebagian dan bertahap pada aplikasi yang sudah ada, tanpa merombak kodenya. |
 | **Keystore** | File kunci untuk menandatangani aplikasi Android. Kalau hilang, update aplikasi tidak bisa dipasang di atas versi lama. Wajib dicadangkan. |
+| **Konteks (percakapan AI)** | Semua yang "diingat" AI dalam satu percakapan. Kalau terlalu panjang, AI mulai lupa dan keliru; saatnya mulai percakapan baru. |
 | **Library** | Kumpulan kode siap pakai yang dipasang untuk menambah kemampuan, misalnya library Python untuk membaca PDF. |
 | **Lisensi** | Aturan tentang boleh tidaknya sebuah kode, model, atau dokumen dipakai, diubah, dan dibagikan. |
 | **Log** | Catatan otomatis tentang apa yang terjadi saat program berjalan. Berguna untuk mencari penyebab masalah. |
@@ -37,6 +41,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Mockup** | Gambar rancangan tampilan sebelum aplikasinya dibuat. |
 | **Model (AI)** | "Otak" AI yang dilatih untuk tugas tertentu. Ada yang berjalan di perangkat (lokal) dan ada yang lewat internet (online). |
 | **NOT TESTED** | Label untuk tes yang belum atau tidak bisa dijalankan. Bukan berarti lulus. |
+| **Payment gateway** | Layanan perantara yang memproses pembayaran antara aplikasi dan bank atau dompet digital. Menyambungkan aplikasi ke sini berada di luar cakupan panduan ini. |
 | **Prompt** | Instruksi atau pertanyaan yang diberikan ke AI. |
 | **Push** | Mengirim commit dari komputer (atau dari AI) ke GitHub. |
 | **README** | Halaman sampul repo: aplikasi ini apa dan cara memakainya. |

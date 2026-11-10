@@ -14,7 +14,8 @@
 
 - **Tujuan dan pengguna:**
 - **Platform:**
-- **Jalur:** Ringan / Lengkap (alasan:)
+- **Jalur:** Ringan / Lengkap / Adopsi (alasan:)
+- **Titik awal adopsi (khusus Jalur Adopsi):** (tag, misalnya `adopsi-awal`)
 - **Repositori:**
 - **Branch aktif:**
 - **Versi terakhir yang berhasil (tag):**
@@ -58,20 +59,24 @@
 
 (Rujuk ke `docs/REGISTER_TEMUAN.md`. Tulis ID dan judul singkat saja.)
 
-## 9. Aturan khusus proyek
+## 9. Pengalaman penting
+
+(Rujuk ke `docs/PENGALAMAN.md`. Tulis 1–3 rambu terpenting saja.)
+
+## 10. Aturan khusus proyek
 
 (Larangan dan batasan yang mengalahkan aturan umum, misalnya: "jangan pakai GitHub Actions", "branch release dibekukan".)
 
-## 10. Persetujuan
+## 11. Persetujuan
 
 - **Sudah disetujui, belum dikerjakan:**
 - **Belum disetujui / menunggu keputusan:**
 
-## 11. Langkah berikutnya
+## 12. Langkah berikutnya
 
 1.
 2.
 
-## 12. Cara build dan menjalankan
+## 13. Cara build dan menjalankan
 
 (Ringkas, atau rujuk ke `BUILD.md`. Hanya perintah yang sudah terbukti berjalan.)

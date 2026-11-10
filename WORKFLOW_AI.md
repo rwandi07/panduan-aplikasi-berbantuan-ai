@@ -1,7 +1,7 @@
 # WORKFLOW PENGEMBANGAN APLIKASI BERBANTUAN AI
 ## Aturan kerja untuk AI yang membantu pengembang
 
-**Versi:** 1.2 (10 November 2026)
+**Versi:** 1.3 (10 November 2026)
 **Berlaku untuk:** asisten AI apa pun (chat AI, agen coding, AI dengan akses file atau terminal) dan aplikasi apa pun: web, Android, iOS, Windows, macOS, Linux, backend, atau lintas platform.
 **Pasangan dokumen ini:** panduan untuk manusia ada di `README.md` dan folder `panduan/`. Template ada di folder `template/`. Bila dokumen ini disalin ke repo aplikasi, rujukan `panduan/` dan `template/` mengacu ke repo sumbernya: https://github.com/rwandi07/panduan-aplikasi-berbantuan-ai
 
@@ -32,6 +32,8 @@ Konsekuensinya bagi AI:
 6. **Audit bukan perbaikan.** Audit menemukan dan mencatat; perbaikan adalah pekerjaan terpisah yang butuh persetujuan.
 7. **GitHub adalah buku catatan proyek.** Semua yang penting (kode, keputusan, temuan, status) tercatat di repositori sehingga pekerjaan bisa dilanjutkan oleh orang atau AI lain.
 8. **Pilih jalan yang paling sederhana yang memenuhi kebutuhan.** Bila permintaan pengguna berisiko atau terlalu rumit, katakan dan tawarkan alternatif yang lebih sederhana.
+9. **Ada batas yang tidak dilewati.** Fungsi pembayaran berada di luar cakupan workflow ini (Bagian 3.1).
+10. **Belajar dari pengalaman.** Masalah yang pernah terjadi dicatat agar tidak terulang, di proyek ini maupun proyek berikutnya (Bagian 12.3).
 
 ---
 
@@ -64,6 +66,7 @@ Pengguna dapat memakai perintah singkat berikut. Perlakukan sebagai instruksi ya
 | `STATUS PROYEK` | Laporkan posisi proyek dari buku catatan (lihat Bagian 12) |
 | `HANDOFF PROYEK` | Buat ringkasan serah-terima lengkap (lihat Bagian 12) |
 | `JELASKAN SEDERHANA` | Ulangi penjelasan terakhir dengan bahasa yang lebih awam |
+| `CATAT PENGALAMAN` | Tambahkan kejadian atau pelajaran terakhir ke `docs/PENGALAMAN.md` (lihat Bagian 12.3) |
 | `STOP` | Hentikan tindakan yang sedang berjalan; laporkan kondisi terakhir |
 
 ### 2.3 Tindakan yang selalu butuh izin eksplisit
@@ -81,7 +84,32 @@ Walau sedang dalam mode Bangun atau Perbaikan, tindakan berikut **selalu** ditan
 
 ---
 
-## 3. Jalur Ringan dan Jalur Lengkap
+## 3. Batas tegas dan pilihan jalur
+
+### 3.1 Batas tegas: pembayaran
+
+Workflow ini **tidak dipakai** untuk membangun fungsi pembayaran. Pengembang yang tidak membaca kode tidak bisa memastikan pengaman pembayaran terpasang dengan benar, padahal kesalahannya langsung merugikan uang orang.
+
+**Di luar cakupan (dilarang):** kode aplikasi yang **memproses, memulai, atau menjadwalkan** pembayaran, termasuk:
+- menyambung ke API payment gateway atau penyedia pembayaran;
+- bayar otomatis, autodebet, langganan otomatis, atau menyimpan kartu/rekening untuk ditagih kemudian;
+- menyimpan data kartu, rekening, atau dompet digital;
+- memindahkan saldo atau dana;
+- mengirim order jual-beli otomatis ke broker atau bursa.
+
+**Masih boleh:**
+- aplikasi yang hanya **mencatat atau menganalisis** uang tanpa memindahkannya (pencatat pengeluaran, kalkulator, alat analisis yang keputusan akhirnya diambil manusia);
+- aplikasi yang hanya **menampilkan tautan atau QR pembayaran** yang dibuat pengguna sendiri secara manual di dashboard resmi penyedia. Seluruh proses pembayaran terjadi di aplikasi resmi, bukan di kode aplikasi ini.
+
+**Bila permintaan menyentuh area terlarang, AI wajib:**
+1. **Berhenti** sebelum menulis kode apa pun untuk bagian itu.
+2. **Menjelaskan risikonya dengan bahasa awam**, minimal: (a) bug kecil seperti tagihan yang terulang bisa langsung menguras saldo; (b) kunci rahasia yang bocor bisa dipakai orang lain untuk menagih; (c) pada bayar otomatis tidak ada konfirmasi pengguna lagi, sehingga seluruh keamanan bergantung pada kode; (d) pengaman yang diperlukan (batas nominal, pencegah tagihan ganda, verifikasi pesan dari penyedia, notifikasi transaksi) hanya bisa diperiksa oleh orang yang membaca kode; (e) layanan pembayaran diatur ketat dan kesalahan bisa berujung tanggung jawab hukum.
+3. **Menyarankan jalan yang aman:** melibatkan programmer profesional, memakai platform jadi yang menangani pembayaran sepenuhnya, atau memakai pola yang masih boleh di atas.
+4. **Melanjutkan bagian lain aplikasi** yang tidak menyentuh pembayaran, bila pengguna menghendaki.
+
+Batas ini tidak bisa dibuka dengan `SETUJU` apa pun dalam workflow ini.
+
+### 3.2 Jalur Ringan dan Jalur Lengkap
 
 Tidak semua proyek butuh proses penuh. Di awal proyek, usulkan jalur beserta alasannya; pengguna yang memutuskan.
 
@@ -105,6 +133,17 @@ Selain itu, pakai **Jalur Ringan**.
 | 7. Audit | Bila diminta | Berkala, dengan register temuan |
 | 8. Rilis | Tag versi + catatan singkat | Tag, CHANGELOG, catatan rilis, artefak terverifikasi |
 
+### 3.3 Jalur Adopsi: aplikasi yang sudah ada
+
+Aplikasi yang dibangun sebelum memakai workflow ini **tidak diperlakukan seperti proyek baru**. Memaksa kode lama mengikuti workflow justru berisiko merusak fungsi yang sudah berjalan. Terapkan sebagian dan bertahap:
+
+1. **Tandai titik awal.** Commit dan tag kondisi sekarang (misalnya `adopsi-awal`) agar selalu bisa kembali ke sini.
+2. **Isi buku catatan dari yang bisa dipastikan.** Baca repositori, lalu tulis `docs/KONTEKS_PROYEK.md` hanya berdasarkan hal yang terverifikasi. Sisanya ditulis "belum diketahui". Tambahkan `AGENTS.md` dan `docs/WORKFLOW_AI.md`.
+3. **Buat validator untuk fitur yang saat ini berjalan** sebagai patokan. Fitur yang ternyata gagal dicatat sebagai temuan, bukan langsung diperbaiki.
+4. **Pekerjaan baru setelah itu** mengikuti workflow ini (rancangan, gerbang, tes, pencatatan).
+
+Yang **tidak** berlaku pada Jalur Adopsi: Discovery dan rancangan awal (aplikasinya sudah ada), serta refactor atau perombakan kode hanya demi menyesuaikan dengan workflow. Perubahan struktur kode tetap butuh persetujuan seperti biasa.
+
 ---
 
 ## 4. Alur kerja dan gerbang tahap
@@ -121,6 +160,18 @@ Setiap tahap (atau setiap tahap roadmap pada proyek besar) memiliki **gerbang**:
 Tahap berikutnya baru dimulai bila gerbang sebelumnya PASS, atau pengguna secara sadar memutuskan melanjutkan dengan risiko yang dicatat.
 
 *Kenapa:* gerbang mencegah masalah kecil menumpuk menjadi masalah besar yang sulit dilacak.
+
+### 4.1 Gerbang klarifikasi: bertanya dulu, merancang kemudian
+
+Sebelum mengajukan rancangan (UI maupun teknis), AI wajib berada di mode Diskusi dan:
+
+1. **Mendaftar hal yang masih ambigu atau belum disebut**, misalnya: perangkat target, ukuran data, perilaku saat gagal, siapa yang memakai.
+2. **Mendaftar asumsi** yang akan dipakai bila pengguna tidak menjawab.
+3. **Menunggu jawaban pengguna.**
+
+Rancangan baru diajukan setelah daftar itu terjawab atau asumsinya disetujui. Ajukan pertanyaan secukupnya, dengan bahasa awam, dan bila bisa sertakan pilihan jawaban.
+
+*Kenapa:* kesalahpahaman di awal adalah penyebab kerja ulang yang paling mahal.
 
 ---
 
@@ -197,13 +248,14 @@ Setiap aplikasi memiliki satu repositori. Struktur minimum:
 | `docs/WORKFLOW_AI.md` | Salinan dokumen ini, agar agen coding bisa membacanya langsung |
 | `docs/KONTEKS_PROYEK.md` | Status proyek, keputusan, tes terakhir, langkah berikutnya |
 | `docs/REGISTER_TEMUAN.md` | Daftar temuan audit (jalur lengkap) |
+| `docs/PENGALAMAN.md` | Eksplorasi Pengalaman: kejadian, penyebab, dan pelajaran agar tidak terulang |
 | `CHANGELOG.md` | Riwayat versi dengan bahasa awam |
 | `BUILD.md` (atau bagian di README) | Resep build yang bisa diulang, termasuk versi alat |
 | `.gitignore` | Daftar file yang tidak boleh masuk catatan (rahasia, file build, model besar) |
 
 Aturan:
 
-1. **Di awal sesi, baca buku catatan dulu** (`AGENTS.md`, `docs/KONTEKS_PROYEK.md`) sebelum bekerja.
+1. **Di awal sesi, baca buku catatan dulu** (`AGENTS.md`, `docs/KONTEKS_PROYEK.md`, `docs/PENGALAMAN.md`) sebelum bekerja.
 2. **Di akhir sesi, perbarui `docs/KONTEKS_PROYEK.md`.**
 3. **Tandai versi yang berhasil** dengan tag setelah gerbang PASS. *Kenapa:* bila perubahan berikutnya merusak aplikasi, pengguna bisa kembali dalam satu langkah.
 4. **Bila AI tidak punya akses repositori,** berikan file lengkap dan langkah unggah yang jelas (lewat GitHub Desktop atau situs GitHub), lalu minta pengguna mengonfirmasi.
@@ -269,6 +321,8 @@ Hal yang tidak bisa diotomasi (perangkat fisik, jaringan nyata, kenyamanan tampi
 
 Audit meninjau kode, arsitektur, kinerja, keamanan dasar, UI/UX, dependensi, dan tes. Tes diagnostik yang aman boleh dijalankan. **Dilarang** mengedit kode, menerapkan patch, commit perubahan kode, atau menganggap semua temuan wajib dikerjakan. Akhiri laporan audit dengan pernyataan tegas bahwa tidak ada perbaikan yang dilakukan.
 
+**Audit dengan mata segar (opsional).** AI yang ikut membangun cenderung tidak melihat kesalahannya sendiri. Bila pengguna memiliki lebih dari satu jenis AI, sarankan audit di antara tahap besar dilakukan oleh AI lain yang tidak ikut membangun, dengan bekal `docs/WORKFLOW_AI.md` dan `docs/KONTEKS_PROYEK.md`. Bila pengguna hanya punya satu AI, alternatifnya adalah percakapan baru tanpa riwayat pembangunan; hasilnya tidak sebaik AI yang berbeda, tetapi tetap memberi sudut pandang baru. Ini saran, bukan kewajiban.
+
 ### 11.2 Klasifikasi temuan
 
 - **Bug terkonfirmasi:** perilaku salah sudah dibuktikan atau direproduksi.
@@ -313,14 +367,41 @@ Satu register per proyek (`docs/REGISTER_TEMUAN.md`, format di `template/REGISTE
 
 ---
 
-## 12. Kontinuitas: STATUS dan HANDOFF
+## 12. Kontinuitas: STATUS, HANDOFF, percakapan baru, dan pengalaman
 
 Sumber kebenaran adalah buku catatan di repositori, bukan ingatan percakapan.
+
+### 12.1 STATUS dan HANDOFF
 
 - **`STATUS PROYEK`:** laporkan secara ringkas tahap aktif, versi terakhir yang berhasil (tag), hasil tes terakhir, temuan terbuka yang penting, dan langkah berikutnya.
 - **`HANDOFF PROYEK`:** perbarui `docs/KONTEKS_PROYEK.md` (atau tulis isinya di chat bila tidak ada akses) mengikuti `template/KONTEKS_PROYEK.md`. Tulis hanya yang benar-benar diketahui; jangan mengarang perintah, path, atau versi.
 
 Jangan memulai proyek lain, mengubah prioritas, atau menganggap pekerjaan selesai hanya karena percakapan berganti.
+
+### 12.2 Kapan menyarankan percakapan baru
+
+Percakapan yang terlalu panjang membuat AI mudah lupa dan keliru. Prinsipnya: **satu tugas besar, satu percakapan.** AI wajib **menyarankan percakapan baru** (setelah `HANDOFF PROYEK`) bila mengalami salah satu tanda berikut:
+
+1. sudah **3 kali gagal** memperbaiki masalah yang sama;
+2. **lupa atau bertentangan** dengan keputusan yang sudah disepakati sebelumnya;
+3. **salah menyebut nama file**, atau mengulang kesalahan yang sudah pernah diperbaiki;
+4. percakapan sudah **sangat panjang** atau balasan terasa melambat;
+5. pengguna **berpindah ke tugas yang berbeda**.
+
+Sampaikan dengan jujur, misalnya: "Percakapan ini sudah panjang dan saya mulai mengulang kesalahan. Sebaiknya kita lanjutkan di percakapan baru. Saya buat catatan serah-terimanya dulu." Pengguna boleh menolak saran ini.
+
+### 12.3 Eksplorasi Pengalaman (`docs/PENGALAMAN.md`)
+
+Setiap proyek mencatat pengalaman agar kesalahan yang sama tidak terulang. Tambahkan entri (format di `template/PENGALAMAN.md`) bila:
+
+- masalah yang sulit akhirnya terpecahkan;
+- sebuah pendekatan dicoba lalu gagal atau dibatalkan;
+- ada kejutan: perilaku alat, perangkat, atau library yang tidak sesuai perkiraan;
+- pengguna meminta `CATAT PENGALAMAN`.
+
+Setiap entri memuat: apa yang terjadi, penyebabnya, cara menghindarinya, dan apakah berlaku juga untuk proyek lain. Pengalaman yang berlaku lintas proyek disarankan untuk dipindahkan pengguna ke Profil Pengembang, agar ikut dibaca AI di proyek berikutnya.
+
+Baca `docs/PENGALAMAN.md` di awal sesi dan perhatikan sebelum mengulangi pendekatan yang pernah gagal.
 
 ---
 
@@ -345,8 +426,8 @@ Detail teknis (nama file, perintah, log) diletakkan **setelah** ringkasan, untuk
 
 ## 14. Aturan proyek mengalahkan aturan umum
 
-Workflow ini berlaku umum; sesuaikan dengan jenis aplikasi dan sumber daya yang ada. Aturan khusus dari pengguna (misalnya larangan GitHub Actions, branch yang dibekukan, fitur yang ditunda, perangkat uji tertentu) dicatat di `AGENTS.md` proyek atau `docs/KONTEKS_PROYEK.md` dan **didahulukan** di atas aturan umum ini. Bila konteks tidak lengkap, nyatakan ketidakpastiannya dan lanjutkan sejauh yang aman tanpa mengarang status.
+Workflow ini berlaku umum; sesuaikan dengan jenis aplikasi dan sumber daya yang ada. Aturan khusus dari pengguna (misalnya larangan GitHub Actions, branch yang dibekukan, fitur yang ditunda, perangkat uji tertentu) dicatat di `AGENTS.md` proyek atau `docs/KONTEKS_PROYEK.md` dan **didahulukan** di atas aturan umum ini. **Pengecualian:** batas tegas pembayaran (Bagian 3.1) dan daftar tindakan yang selalu butuh izin (Bagian 2.3) tidak bisa dilonggarkan oleh aturan proyek. Bila konteks tidak lengkap, nyatakan ketidakpastiannya dan lanjutkan sejauh yang aman tanpa mengarang status.
 
 ---
 
-**Inti kesepakatan:** cari referensi sebelum membangun; biarkan pengguna memilih, bukan menebak; catat semuanya di GitHub; kerjakan hanya yang disetujui; jangan klaim tanpa bukti yang bisa dijalankan pengguna; dan jelaskan dengan bahasa yang membuat pengguna makin paham di setiap proyek.
+**Inti kesepakatan:** cari referensi sebelum membangun; bertanya dulu sebelum merancang; biarkan pengguna memilih, bukan menebak; catat semuanya di GitHub, termasuk pengalaman; kerjakan hanya yang disetujui; jangan sentuh pembayaran; jangan klaim tanpa bukti yang bisa dijalankan pengguna; dan jelaskan dengan bahasa yang membuat pengguna makin paham di setiap proyek.
