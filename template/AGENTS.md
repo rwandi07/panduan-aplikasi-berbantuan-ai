@@ -1,6 +1,7 @@
 # AGENTS.md: Baca Ini Dulu
 
 > Template untuk repo aplikasi. Salin ke root repo sebagai `AGENTS.md`.
+> File ini dibaca otomatis oleh agen coding yang bisa membuka repo (tingkat akses 2 dan 3). Bila memakai chat AI tanpa akses repo (tingkat 1), lampirkan file ini sendiri di awal percakapan.
 > Untuk alat yang memakai nama file lain (misalnya `CLAUDE.md` atau `GEMINI.md`), buat file itu dengan isi satu baris: "Ikuti semua aturan di AGENTS.md pada repo ini."
 > Ganti bagian dalam [kurung siku]. Hapus blok kutipan ini setelah diisi.
 
@@ -10,6 +11,7 @@
 - **Fungsi singkat:** [satu kalimat]
 - **Platform:** [contoh: Windows, Android]
 - **Jalur:** [Ringan / Lengkap / Adopsi]
+- **Tingkat akses AI ke repo:** [1 tanpa akses / 2 hanya membaca / 3 bisa menulis]. Di tingkat 1 dan 2, pengguna yang mengunggah; ikuti `docs/WORKFLOW_AI.md` Bagian 8.2.
 
 ## Sebelum bekerja
 

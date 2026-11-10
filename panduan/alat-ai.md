@@ -12,6 +12,8 @@ Nama dan fitur alat AI berubah cepat. Halaman ini sengaja dipisah dari aturan in
 | **Agen coding** | Codex, Claude Code, agen di dalam editor kode | Membaca dan mengubah banyak file di repo, menjalankan tes, commit | Perlu akses repo; perlu batas izin yang jelas |
 | **Kamu sendiri** | Laptop dan HP-mu | Tes di perangkat sungguhan, menilai kenyamanan tampilan, menyetujui | Waktumu terbatas, jadi pakai hanya bila perlu |
 
+Kemampuan agen dan akses langsung ke GitHub sering hanya ada di paket berbayar, dan ketentuannya berubah-ubah. Chat AI gratis tetap cukup untuk memakai panduan ini; kamu cukup menjadi "pengunggah".
+
 Banyak chat AI sekarang juga punya mode agen (bisa menjalankan kode atau mengakses GitHub). Tanyakan langsung ke AI-nya apa yang bisa dilakukan, memakai pesan pembuka di [README](../README.md).
 
 ---
@@ -56,11 +58,9 @@ Dengan begitu kamu hanya memelihara satu file.
 
 ## Kalau AI tidak punya akses repo
 
-Tidak masalah. Minta:
+Tidak masalah, dan **tidak perlu langganan berbayar.** Panduan ini membedakan tiga tingkat akses AI ke GitHub: tanpa akses, hanya membaca, dan bisa menulis. Semua aturannya berlaku sama; bedanya hanya siapa yang mengunggah. Di tingkat tanpa akses, AI memberimu file utuh, daftar file, dan pesan commit, lalu kamu yang mengunggah.
 
-> *"Berikan file lengkap yang berubah, dan langkah mengunggahnya ke GitHub."*
-
-Lalu unggah lewat GitHub Desktop atau situs GitHub (lihat [github-dasar.md](github-dasar.md)). Setelah itu, beri tahu AI bahwa perubahan sudah tersimpan.
+Langkah lengkapnya ada di [github-dasar.md](github-dasar.md#tingkat-akses-ai-ke-github), dan prompt-nya di [kumpulan-prompt.md](kumpulan-prompt.md).
 
 ---
 

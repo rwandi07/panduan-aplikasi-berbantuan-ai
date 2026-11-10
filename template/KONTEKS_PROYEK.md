@@ -18,7 +18,8 @@
 - **Titik awal adopsi (khusus Jalur Adopsi):** (tag, misalnya `checkpoint/adopsi-awal`)
 - **Repositori:**
 - **Branch aktif:**
-- **Checkpoint terakhir yang berhasil:** (misalnya `checkpoint/v0.3.0`)
+- **Tingkat akses AI ke repo ini:** 1 tanpa akses / 2 hanya membaca / 3 bisa menulis
+- **Checkpoint terakhir yang berhasil:** (misalnya `checkpoint/v0.3.0`, atau kode commit `0529fbd` bila tanpa tag)
 - **Release Candidate terakhir:** (misalnya `v0.3.0-rc.1`, atau "belum ada")
 - **Rilis publik terakhir:** (misalnya `v0.2.0`, atau "belum pernah")
 - **Commit terakhir yang terverifikasi:**

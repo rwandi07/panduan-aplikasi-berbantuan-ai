@@ -127,6 +127,8 @@ Begitu tahap ini terbukti berhasil, tandai sebagai **checkpoint**. Ibarat menemp
 
 > *"Tes sudah BERHASIL. Commit, beri tag checkpoint, perbarui CHANGELOG dan KONTEKS_PROYEK."*
 
+Kalau AI-mu tidak bisa membuka GitHub dan kamu mengunggah lewat situs GitHub, cukup catat **kode commit**-nya sebagai checkpoint di `docs/KONTEKS_PROYEK.md` (lihat [github-dasar.md](github-dasar.md#checkpoint-dan-kembali-ke-versi-lama-tanpa-tag)).
+
 Checkpoint **bukan** rilis. Tes yang lulus belum berarti aplikasinya siap dibagikan. Kalau kamu ingin AI membuat checkpoint tanpa bertanya setiap kali, tulis izinnya di bagian "Kewenangan versi dan rilis" pada `AGENTS.md`.
 
 Kalau suatu saat perubahan berikutnya merusak aplikasi:

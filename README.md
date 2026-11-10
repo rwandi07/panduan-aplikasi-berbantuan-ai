@@ -10,7 +10,7 @@ Panduan ini untuk kamu yang **membuat aplikasi dengan bantuan AI** (ChatGPT, Cla
 
 Mungkin kamu paham alur aplikasimu, tapi tidak selalu paham detail kode yang ditulis AI. Itu wajar. Panduan ini membantu kamu bekerja **hampir setara profesional**: proyek tercatat rapi, hasil kerja AI bisa kamu buktikan sendiri, dan pekerjaan bisa dilanjutkan kapan saja, di chat mana pun, dengan AI mana pun.
 
-**Versi:** 1.3 (10 November 2026). Lihat [CHANGELOG.md](CHANGELOG.md).
+**Versi:** 1.4 (10 November 2026). Lihat [CHANGELOG.md](CHANGELOG.md).
 
 > **Batas tegas:** panduan ini tidak dipakai untuk membangun fungsi pembayaran (payment gateway, bayar otomatis, menyimpan data kartu, memindahkan saldo). Alasannya ada di [panduan/batas-pembayaran.md](panduan/batas-pembayaran.md).
 
@@ -37,7 +37,9 @@ Mungkin kamu paham alur aplikasimu, tapi tidak selalu paham detail kode yang dit
 
 ## Mulai cepat
 
-1. **Isi profilmu sekali saja.** Salin [template/PROFIL_PENGEMBANG.md](template/PROFIL_PENGEMBANG.md), isi tingkat keahlian, spesifikasi komputer, dan HP-mu. Simpan di tempat pribadi (jangan di repo publik).
+> **Tidak perlu langganan AI berbayar.** GitHub gratis. Kalau AI-mu tidak bisa membuka GitHub langsung, kamu yang mengunggah file yang disiapkan AI, dan semua aturan panduan tetap berlaku. Lihat [tingkat akses AI ke GitHub](panduan/github-dasar.md#tingkat-akses-ai-ke-github).
+
+1. **Isi profilmu sekali saja.** Salin [template/PROFIL_PENGEMBANG.md](template/PROFIL_PENGEMBANG.md), isi tingkat keahlian, spesifikasi komputer dan HP-mu, serta tingkat akses AI-mu ke GitHub. Simpan di tempat pribadi (jangan di repo publik).
 2. **Buat satu repositori GitHub untuk setiap aplikasi.** Kalau belum pernah, baca [panduan/github-dasar.md](panduan/github-dasar.md) dulu.
 3. **Mulai percakapan dengan AI** memakai pesan pembuka di bawah, lampirkan `WORKFLOW_AI.md` dan profilmu.
 4. **Ikuti alurnya:** ide → cari aplikasi pembanding → pilih rancangan → bangun → tes → tandai checkpoint → rilis. Detailnya di [panduan/alur-kerja.md](panduan/alur-kerja.md).
@@ -56,7 +58,8 @@ Pelajari keduanya. Jangan mulai mengerjakan apa pun dulu.
 Setelah membaca, jawab singkat:
 1. Apa yang kamu pahami dari aturan kerja ini (maksimal 5 poin).
 2. Bagian mana yang bisa dan tidak bisa kamu lakukan dengan alat yang kamu punya sekarang
-   (misalnya akses GitHub, menjalankan kode, membuat gambar mockup).
+   (misalnya menjalankan kode, membuat gambar mockup), dan tingkat aksesmu ke GitHub
+   (1: tanpa akses, 2: hanya membaca, 3: bisa menulis). Periksa, jangan menebak.
 3. Konfirmasi bahwa audit, pembangunan, dan perbaikan adalah kegiatan terpisah,
    dan perbaikan hanya dilakukan setelah saya setujui.
 
