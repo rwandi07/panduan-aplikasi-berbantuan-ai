@@ -15,10 +15,12 @@
 - **Tujuan dan pengguna:**
 - **Platform:**
 - **Jalur:** Ringan / Lengkap / Adopsi (alasan:)
-- **Titik awal adopsi (khusus Jalur Adopsi):** (tag, misalnya `adopsi-awal`)
+- **Titik awal adopsi (khusus Jalur Adopsi):** (tag, misalnya `checkpoint/adopsi-awal`)
 - **Repositori:**
 - **Branch aktif:**
-- **Versi terakhir yang berhasil (tag):**
+- **Checkpoint terakhir yang berhasil:** (misalnya `checkpoint/v0.3.0`)
+- **Release Candidate terakhir:** (misalnya `v0.3.0-rc.1`, atau "belum ada")
+- **Rilis publik terakhir:** (misalnya `v0.2.0`, atau "belum pernah")
 - **Commit terakhir yang terverifikasi:**
 
 ## 3. Kriteria berhasil
@@ -38,7 +40,7 @@
 
 ## 5. Roadmap dan status tahap
 
-| Tahap | Kriteria selesai | Status (belum / sedang / PASS / FAIL) | Tag |
+| Tahap | Kriteria selesai | Status (belum / sedang / PASS / FAIL) | Tag checkpoint |
 |---|---|---|---|
 | 1 | | | |
 

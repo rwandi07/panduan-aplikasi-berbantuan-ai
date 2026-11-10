@@ -14,6 +14,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Branch** | "Kertas coretan" di repo. Tempat mencoba perubahan tanpa mengganggu versi utama. |
 | **Bug** | Kesalahan yang membuat aplikasi berperilaku tidak sesuai harapan. |
 | **Build** | Proses mengubah kode menjadi aplikasi yang bisa dijalankan (misalnya APK atau EXE). Build berhasil **belum tentu** aplikasinya bekerja benar. |
+| **Checksum** | "Sidik jari" sebuah file berupa deretan huruf dan angka. Kalau isi file berubah sedikit saja, checksum-nya ikut berubah; berguna untuk memastikan file aplikasi yang dibagikan masih asli. |
 | **CHANGELOG** | Catatan riwayat perubahan per versi, ditulis supaya mudah dibaca manusia. |
 | **CI (Continuous Integration)** | Layanan yang otomatis menjalankan build dan tes setiap ada perubahan di repo, misalnya GitHub Actions. |
 | **Commit** | Satu entri bertanggal di buku catatan (repo): perubahan apa dan kenapa. |
@@ -48,12 +49,14 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Refactor** | Merapikan susunan kode tanpa mengubah fungsinya. |
 | **Register temuan** | Daftar hasil audit beserta bukti, tingkat keparahan, dan keputusanmu. |
 | **Regresi** | Fitur lama yang tadinya bekerja menjadi rusak karena perubahan baru. Dicegah dengan menjalankan ulang tes lama. |
-| **Release** | Versi aplikasi yang diterbitkan, biasanya disertai file aplikasi dan catatan rilis. |
+| **Release / rilis publik** | Versi aplikasi yang resmi diterbitkan untuk pengguna, misalnya `v0.3.0`, biasanya disertai file aplikasi dan catatan rilis. Butuh persetujuanmu. |
+| **Release Candidate (RC)** | Versi kandidat untuk pemeriksaan terakhir sebelum rilis publik, misalnya `v0.3.0-rc.1`. Belum berarti disetujui. |
 | **Repositori (repo)** | Buku catatan proyek di GitHub: semua file dan riwayat perubahan satu aplikasi. |
 | **Rollback** | Kembali ke versi sebelumnya yang masih berjalan. |
 | **Severity / Priority** | Severity: seberapa parah suatu masalah. Priority: seberapa penting segera ditangani. Keduanya dinilai terpisah. |
 | **Set evaluasi** | Kumpulan contoh input tetap untuk menguji fitur AI setiap kali model atau prompt berubah. |
-| **Tag** | Penanda versi di repo, misalnya `v1.2.0`: "versi ini sudah dites dan berhasil". |
+| **Tag** | Penanda pada satu commit di repo. Dalam panduan ini ada dua jenis: tag checkpoint (`checkpoint/v0.3.0`) dan tag rilis (`v0.3.0`). |
+| **Tag checkpoint** | Penanda internal bahwa kriteria tes tertentu lulus pada commit itu, misalnya `checkpoint/v0.3.0`. Bukan rilis, dan bukan bukti aplikasi bebas masalah. |
 | **UAT (User Acceptance Test)** | Tes oleh pemakai untuk memastikan aplikasi sesuai kebutuhan. Dalam panduan ini: checklist manual. |
 | **UI / UX** | UI: tampilan aplikasi. UX: pengalaman memakainya (mudah, nyaman, tidak membingungkan). |
 | **Validator** | Satu file tes yang bisa kamu jalankan sendiri dan menghasilkan BERHASIL atau GAGAL. |

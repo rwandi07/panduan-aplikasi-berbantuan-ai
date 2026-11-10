@@ -14,8 +14,8 @@ Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tid
 3. Rancang tampilan (mockup) dan teknis
 4. Bangun
 5. Tes dan buktikan
-6. Tandai versi yang berhasil
-7. Rilis / pakai
+6. Tandai checkpoint
+7. Release Candidate, lalu rilis
    ... lalu ulangi dari langkah 3 untuk fitur berikutnya
 ```
 
@@ -36,7 +36,7 @@ Tidak semua aplikasi butuh proses penuh.
 
 Kalau aplikasinya sudah ada sebelum kamu memakai panduan ini, jangan perlakukan seperti proyek baru. Memaksa kode lama mengikuti panduan justru berisiko merusak yang sudah berjalan. Terapkan sebagian saja:
 
-1. Tandai versi sekarang sebagai titik awal.
+1. Tandai kondisi sekarang sebagai checkpoint titik awal.
 2. AI mengisi `docs/KONTEKS_PROYEK.md` dari hal yang bisa ia pastikan; sisanya "belum diketahui".
 3. Buat validator untuk fitur yang sekarang berjalan, sebagai patokan.
 4. Pekerjaan **baru** setelah itu mengikuti panduan.
@@ -119,21 +119,35 @@ Lalu jalankan validatornya, misalnya klik dua kali `VALIDASI.bat`. Kalau hasilny
 
 ---
 
-## Langkah 6 — Tandai versi yang berhasil
+## Langkah 6 — Tandai checkpoint
 
-Begitu tahap ini terbukti berhasil, tandai versinya. Ibarat menempel pembatas di buku catatan: "sampai halaman ini, semuanya berjalan."
+Begitu tahap ini terbukti berhasil, tandai sebagai **checkpoint**. Ibarat menempel pembatas di buku catatan: "sampai halaman ini, tesnya lulus."
 
-> *"Tes sudah BERHASIL. Commit, beri tag versi, perbarui CHANGELOG dan KONTEKS_PROYEK."*
+> *"Tes sudah BERHASIL. Commit, beri tag checkpoint, perbarui CHANGELOG dan KONTEKS_PROYEK."*
+
+Checkpoint **bukan** rilis. Tes yang lulus belum berarti aplikasinya siap dibagikan. Kalau kamu ingin AI membuat checkpoint tanpa bertanya setiap kali, tulis izinnya di bagian "Kewenangan versi dan rilis" pada `AGENTS.md`.
 
 Kalau suatu saat perubahan berikutnya merusak aplikasi:
 
-> *"Kembalikan aplikasi ke versi v0.3.0 yang terakhir berhasil. Jelaskan dulu apa yang akan terjadi sebelum melakukannya."*
+> *"Kembalikan aplikasi ke checkpoint/v0.3.0 yang terakhir berhasil. Jelaskan dulu apa yang akan terjadi sebelum melakukannya."*
 
 ---
 
-## Langkah 7 — Rilis atau pakai
+## Langkah 7 — Release Candidate, lalu rilis
 
-> *"MODE: RILIS. Siapkan file aplikasi (APK/EXE/lainnya) untuk versi ini, beserta catatan rilis singkat. Jangan unggah ke mana pun sebelum saya setujui."*
+Rilis dilakukan dua tahap, supaya ada pemeriksaan terakhir sebelum aplikasi dipakai atau dibagikan.
+
+**a. Release Candidate (RC):** AI menyiapkan versi kandidat, misalnya `v0.3.0-rc.1`, beserta file aplikasi, hasil tes, checksum (sidik jari file untuk memastikan tidak berubah), dan catatan rilis.
+
+> *"MODE: RILIS. Siapkan Release Candidate untuk versi ini: file aplikasi (APK/EXE/lainnya), hasil tes, checksum, dan catatan rilis singkat. Jangan terbitkan apa pun."*
+
+Coba RC-nya sendiri. Jalankan checklist tes manual.
+
+**b. Rilis publik:** setelah kamu puas, baru diterbitkan sebagai versi resmi, misalnya `v0.3.0`.
+
+> *"RC sudah saya periksa dan sesuai. Terbitkan sebagai rilis v0.3.0."*
+
+Merge ke `main`, membuat GitHub Release, dan mengunggah ke toko aplikasi selalu menunggu persetujuanmu, kecuali kamu sudah mengizinkannya secara tertulis.
 
 ---
 

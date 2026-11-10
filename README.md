@@ -1,5 +1,9 @@
 # Panduan Pengembangan Aplikasi Berbantuan AI
 
+### Human-Controlled AI Development Framework
+
+> **AI mengerjakan, manusia mengendalikan.** AI menulis kode, menjalankan tes, dan mencatat. Keputusan produk, persetujuan perubahan, dan rilis tetap di tanganmu.
+
 Panduan ini untuk kamu yang **membuat aplikasi dengan bantuan AI** (ChatGPT, Claude, Gemini, Codex, dan sejenisnya), tetapi **bukan programmer profesional**.
 
 Mungkin kamu paham alur aplikasimu, tapi tidak selalu paham detail kode yang ditulis AI. Itu wajar. Panduan ini membantu kamu bekerja **hampir setara profesional**: proyek tercatat rapi, hasil kerja AI bisa kamu buktikan sendiri, dan pekerjaan bisa dilanjutkan kapan saja, di chat mana pun, dengan AI mana pun.
@@ -34,7 +38,7 @@ Mungkin kamu paham alur aplikasimu, tapi tidak selalu paham detail kode yang dit
 1. **Isi profilmu sekali saja.** Salin [template/PROFIL_PENGEMBANG.md](template/PROFIL_PENGEMBANG.md), isi tingkat keahlian, spesifikasi komputer, dan HP-mu. Simpan di tempat pribadi (jangan di repo publik).
 2. **Buat satu repositori GitHub untuk setiap aplikasi.** Kalau belum pernah, baca [panduan/github-dasar.md](panduan/github-dasar.md) dulu.
 3. **Mulai percakapan dengan AI** memakai pesan pembuka di bawah, lampirkan `WORKFLOW_AI.md` dan profilmu.
-4. **Ikuti alurnya:** ide → cari aplikasi pembanding → pilih rancangan → bangun → tes → tandai versi. Detailnya di [panduan/alur-kerja.md](panduan/alur-kerja.md).
+4. **Ikuti alurnya:** ide → cari aplikasi pembanding → pilih rancangan → bangun → tes → tandai checkpoint → rilis. Detailnya di [panduan/alur-kerja.md](panduan/alur-kerja.md).
 5. **Jangan terima "sudah selesai" tanpa bukti** yang bisa kamu jalankan sendiri. Lihat [panduan/tes-sendiri.md](panduan/tes-sendiri.md).
 
 Aplikasimu sudah ada sebelum memakai panduan ini? Pakai **Jalur Adopsi** di [panduan/alur-kerja.md](panduan/alur-kerja.md#aplikasi-lama-jalur-adopsi).

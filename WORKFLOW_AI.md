@@ -1,5 +1,6 @@
-# WORKFLOW PENGEMBANGAN APLIKASI BERBANTUAN AI
-## Aturan kerja untuk AI yang membantu pengembang
+# Panduan Pengembangan Aplikasi Berbantuan AI
+## Human-Controlled AI Development Framework
+### Aturan kerja untuk AI yang membantu pengembang
 
 **Versi:** 1.3 (10 November 2026)
 **Berlaku untuk:** asisten AI apa pun (chat AI, agen coding, AI dengan akses file atau terminal) dan aplikasi apa pun: web, Android, iOS, Windows, macOS, Linux, backend, atau lintas platform.
@@ -49,7 +50,7 @@ Konsekuensinya bagi AI:
 | **Bangun** | Mengerjakan tugas yang disetujui | Coding, build, tes dalam lingkup | Tidak melebar ke fitur atau perombakan lain |
 | **Audit** | Mencari bug, kelemahan, risiko | Inspeksi dan tes diagnostik yang aman | **Tidak memperbaiki kode** |
 | **Perbaikan** | Menangani temuan yang disetujui | Implementasi dan verifikasi item tersebut saja | Butuh persetujuan eksplisit per item atau kelompok |
-| **Rilis** | Memfinalisasi versi | Menyiapkan artefak, catatan rilis, tag | Publikasi dan merge ke cabang utama butuh izin |
+| **Rilis** | Memfinalisasi versi | Menyiapkan Release Candidate, artefak, hasil tes, checksum, catatan rilis | Rilis publik dan merge ke cabang utama butuh persetujuan (Bagian 8.1) |
 
 Bila mode tidak jelas, tanyakan atau pilih mode yang paling aman (Diskusi). "Diskusi saja", "analisis saja", atau "jangan jalankan" berarti tidak ada tindakan operasional. Izin mengaudit bukan izin memperbaiki. Izin memperbaiki satu item bukan izin memperbaiki semua item.
 
@@ -69,18 +70,26 @@ Pengguna dapat memakai perintah singkat berikut. Perlakukan sebagai instruksi ya
 | `CATAT PENGALAMAN` | Tambahkan kejadian atau pelajaran terakhir ke `docs/PENGALAMAN.md` (lihat Bagian 12.3) |
 | `STOP` | Hentikan tindakan yang sedang berjalan; laporkan kondisi terakhir |
 
-### 2.3 Tindakan yang selalu butuh izin eksplisit
+### 2.3 Tindakan yang butuh izin eksplisit
 
-Walau sedang dalam mode Bangun atau Perbaikan, tindakan berikut **selalu** ditanyakan dulu:
+**A. Selalu ditanyakan setiap kali.** Walau sedang dalam mode Bangun atau Perbaikan, dan walau ada aturan proyek apa pun:
 
 - Menghapus file, folder, atau data pengguna.
 - `force push`, menulis ulang riwayat Git, atau menghapus branch/tag.
-- Merge ke cabang utama (`main`) pada jalur lengkap.
-- Menerbitkan rilis, mengunggah ke toko aplikasi, atau membuat repositori menjadi publik.
+- Membuat repositori menjadi publik.
 - Memakai, membuat, atau mengubah kredensial, API key, keystore, atau sertifikat.
 - Tindakan yang memicu biaya (API berbayar, layanan cloud).
 - Menonaktifkan, melewati, atau melemahkan tes.
 - Memasang perangkat lunak di komputer pengguna (lihat Bagian 9.3).
+
+**B. Ditanyakan, kecuali kewenangannya sudah diberikan secara tertulis** di aturan proyek (`AGENTS.md` atau `docs/KONTEKS_PROYEK.md`). Rinciannya di Bagian 8.1:
+
+- Membuat tag checkpoint internal.
+- Menerbitkan Release Candidate.
+- Merge ke cabang utama (`main`).
+- Membuat GitHub Release, mendistribusikan aplikasi, atau mengunggah ke toko aplikasi (rilis publik).
+
+Kewenangan tertulis berlaku untuk tindakan rutin yang jelas termasuk dalam lingkupnya; tidak perlu ditanyakan berulang kali. Tindakan di luar lingkup itu tetap ditanyakan.
 
 ---
 
@@ -128,16 +137,16 @@ Selain itu, pakai **Jalur Ringan**.
 | 2. Discovery | 2–3 pembanding | 5–8 pembanding + analisis kesenjangan |
 | 3. Rancangan UI | 1–2 mockup | UI Discovery + 2–3 varian mockup |
 | 4. Rancangan teknis | Pilihan teknologi + alasan singkat | Arsitektur, roadmap bertahap, risiko |
-| 5. Bangun | Boleh langsung di `main` bila versi terakhir yang berhasil sudah ditandai | Kerja di branch, merge setelah tes dan persetujuan |
+| 5. Bangun | Boleh commit langsung di `main` bila pengguna mengizinkannya dan checkpoint terakhir sudah ditandai | Kerja di branch, merge setelah tes dan persetujuan |
 | 6. Tes | Validator sederhana + checklist manual | Validator per tahap + regresi + checklist manual |
 | 7. Audit | Bila diminta | Berkala, dengan register temuan |
-| 8. Rilis | Tag versi + catatan singkat | Tag, CHANGELOG, catatan rilis, artefak terverifikasi |
+| 8. Rilis | Tag checkpoint; rilis publik bila diperlukan | Release Candidate, CHANGELOG, catatan rilis, artefak dan checksum terverifikasi, lalu rilis publik |
 
 ### 3.3 Jalur Adopsi: aplikasi yang sudah ada
 
 Aplikasi yang dibangun sebelum memakai workflow ini **tidak diperlakukan seperti proyek baru**. Memaksa kode lama mengikuti workflow justru berisiko merusak fungsi yang sudah berjalan. Terapkan sebagian dan bertahap:
 
-1. **Tandai titik awal.** Commit dan tag kondisi sekarang (misalnya `adopsi-awal`) agar selalu bisa kembali ke sini.
+1. **Tandai titik awal.** Commit dan beri tag checkpoint pada kondisi sekarang (misalnya `checkpoint/adopsi-awal`) agar selalu bisa kembali ke sini. Pembuatan tag mengikuti kewenangan di Bagian 8.1.
 2. **Isi buku catatan dari yang bisa dipastikan.** Baca repositori, lalu tulis `docs/KONTEKS_PROYEK.md` hanya berdasarkan hal yang terverifikasi. Sisanya ditulis "belum diketahui". Tambahkan `AGENTS.md` dan `docs/WORKFLOW_AI.md`.
 3. **Buat validator untuk fitur yang saat ini berjalan** sebagai patokan. Fitur yang ternyata gagal dicatat sebagai temuan, bukan langsung diperbaiki.
 4. **Pekerjaan baru setelah itu** mengikuti workflow ini (rancangan, gerbang, tes, pencatatan).
@@ -148,14 +157,14 @@ Yang **tidak** berlaku pada Jalur Adopsi: Discovery dan rancangan awal (aplikasi
 
 ## 4. Alur kerja dan gerbang tahap
 
-Alur umum: **Kebutuhan → Discovery → Rancangan (UI dan teknis) → Bangun → Tes → Tandai versi → Rilis**.
+Alur umum: **Kebutuhan → Discovery → Rancangan (UI dan teknis) → Bangun → Tes → Tag checkpoint → Release Candidate → Rilis publik**.
 
 Setiap tahap (atau setiap tahap roadmap pada proyek besar) memiliki **gerbang**:
 
 1. **Kriteria selesai**, ditulis dengan bahasa pengguna. Contoh: "Saat saya memilih file lalu menekan Kirim, file muncul di folder tujuan di HP."
 2. **Cara membuktikan**: validator yang bisa dijalankan dan/atau langkah checklist manual.
 3. **Hasil**: PASS / FAIL / NOT TESTED, beserta log.
-4. **Checkpoint**: commit dan, bila PASS, tag versi (misalnya `v0.3.0`) serta pembaruan `docs/KONTEKS_PROYEK.md`.
+4. **Checkpoint**: commit dan, bila PASS, tag checkpoint internal (misalnya `checkpoint/v0.3.0`, sesuai kewenangan di Bagian 8.1) serta pembaruan `docs/KONTEKS_PROYEK.md`. Gerbang PASS tidak sama dengan siap rilis.
 
 Tahap berikutnya baru dimulai bila gerbang sebelumnya PASS, atau pengguna secara sadar memutuskan melanjutkan dengan risiko yang dicatat.
 
@@ -257,9 +266,39 @@ Aturan:
 
 1. **Di awal sesi, baca buku catatan dulu** (`AGENTS.md`, `docs/KONTEKS_PROYEK.md`, `docs/PENGALAMAN.md`) sebelum bekerja.
 2. **Di akhir sesi, perbarui `docs/KONTEKS_PROYEK.md`.**
-3. **Tandai versi yang berhasil** dengan tag setelah gerbang PASS. *Kenapa:* bila perubahan berikutnya merusak aplikasi, pengguna bisa kembali dalam satu langkah.
+3. **Tandai checkpoint yang berhasil** dengan tag internal setelah gerbang PASS (Bagian 8.1). *Kenapa:* bila perubahan berikutnya merusak aplikasi, pengguna bisa kembali dalam satu langkah.
 4. **Bila AI tidak punya akses repositori,** berikan file lengkap dan langkah unggah yang jelas (lewat GitHub Desktop atau situs GitHub), lalu minta pengguna mengonfirmasi.
 5. **Pengguna tidak perlu menghafal perintah Git.** AI boleh mengetik perintahnya, tetapi wajib menjelaskan artinya dalam satu kalimat.
+
+### 8.1 Manajemen versi, tag, dan rilis
+
+Bedakan empat kegiatan berikut. Masing-masing punya arti dan izin yang berbeda.
+
+| Kegiatan | Arti | Contoh nama | Siapa yang boleh |
+|---|---|---|---|
+| **1. Commit pengembangan** | Mencatat perubahan kode atau dokumentasi | (pesan commit) | AI, dalam lingkup pengembangan yang disetujui dan sesuai izin repositori |
+| **2. Tag checkpoint internal** | Menandai commit yang sudah memenuhi kriteria tes tertentu | `checkpoint/v0.3.0` atau `test-pass/v0.3.0` | AI, bila kewenangannya sudah tertulis di aturan proyek; bila belum, minta persetujuan dulu |
+| **3. Release Candidate (RC)** | Versi kandidat untuk pemeriksaan akhir sebelum dipublikasikan | `v0.3.0-rc.1` | AI boleh menyiapkan artefak, hasil tes, checksum, dan catatan rilis dalam lingkup yang disetujui; publikasi RC mengikuti izin proyek |
+| **4. Rilis publik** | Versi yang resmi tersedia bagi pengguna | `v0.3.0` | Butuh persetujuan eksplisit pengguna, kecuali kewenangannya sudah diberikan secara jelas sebelumnya |
+
+Rincian:
+
+1. **Commit pengembangan** boleh dilakukan selama pekerjaan berada dalam lingkup yang sudah disetujui.
+2. **Tag checkpoint internal** bukan bukti bahwa seluruh aplikasi bebas masalah; ia hanya menandai bahwa kriteria tes tertentu terpenuhi pada commit itu. Gunakan awalan `checkpoint/` atau `test-pass/` secara konsisten agar tidak tertukar dengan versi rilis.
+3. **Release Candidate** disiapkan setelah kriteria rilis yang disepakati terpenuhi. Sertakan hasil tes yang sebenarnya (PASS / FAIL / NOT TESTED), checksum artefak, dan batasan yang diketahui.
+4. **Rilis publik** mencakup pembuatan GitHub Release, distribusi aplikasi, publikasi ke toko aplikasi, dan merge ke branch utama. Semuanya butuh persetujuan eksplisit, kecuali kewenangan itu sudah diberikan secara tertulis.
+
+**Prinsip utama:**
+
+- PASS suatu tes tidak otomatis berarti siap rilis.
+- Tag internal tidak otomatis berarti rilis publik.
+- Release Candidate tidak otomatis berarti sudah disetujui.
+- Publikasi dan merge tidak boleh dilakukan hanya karena build berhasil.
+- Izin yang sudah diberikan untuk suatu lingkup tidak perlu diminta berulang kali untuk tindakan rutin yang jelas termasuk di dalamnya.
+
+**Cara menulis kewenangan.** Kewenangan dicatat di bagian "Kewenangan versi dan rilis" pada `AGENTS.md` proyek, misalnya: "AI boleh membuat tag `checkpoint/*` setelah validator BERHASIL" atau "Merge ke `main` dan rilis publik selalu ditanyakan". Bila bagian itu kosong atau tidak ada, anggap semua kewenangan pada nomor 2–4 **belum** diberikan.
+
+*Kenapa:* memisahkan "menandai kemajuan" dari "menerbitkan ke publik" mencegah AI menganggap tes yang lulus sebagai izin untuk merilis.
 
 ---
 
@@ -373,7 +412,7 @@ Sumber kebenaran adalah buku catatan di repositori, bukan ingatan percakapan.
 
 ### 12.1 STATUS dan HANDOFF
 
-- **`STATUS PROYEK`:** laporkan secara ringkas tahap aktif, versi terakhir yang berhasil (tag), hasil tes terakhir, temuan terbuka yang penting, dan langkah berikutnya.
+- **`STATUS PROYEK`:** laporkan secara ringkas tahap aktif, checkpoint terakhir yang berhasil, Release Candidate dan rilis publik terakhir (bila ada), hasil tes terakhir, temuan terbuka yang penting, dan langkah berikutnya.
 - **`HANDOFF PROYEK`:** perbarui `docs/KONTEKS_PROYEK.md` (atau tulis isinya di chat bila tidak ada akses) mengikuti `template/KONTEKS_PROYEK.md`. Tulis hanya yang benar-benar diketahui; jangan mengarang perintah, path, atau versi.
 
 Jangan memulai proyek lain, mengubah prioritas, atau menganggap pekerjaan selesai hanya karena percakapan berganti.
@@ -426,7 +465,7 @@ Detail teknis (nama file, perintah, log) diletakkan **setelah** ringkasan, untuk
 
 ## 14. Aturan proyek mengalahkan aturan umum
 
-Workflow ini berlaku umum; sesuaikan dengan jenis aplikasi dan sumber daya yang ada. Aturan khusus dari pengguna (misalnya larangan GitHub Actions, branch yang dibekukan, fitur yang ditunda, perangkat uji tertentu) dicatat di `AGENTS.md` proyek atau `docs/KONTEKS_PROYEK.md` dan **didahulukan** di atas aturan umum ini. **Pengecualian:** batas tegas pembayaran (Bagian 3.1) dan daftar tindakan yang selalu butuh izin (Bagian 2.3) tidak bisa dilonggarkan oleh aturan proyek. Bila konteks tidak lengkap, nyatakan ketidakpastiannya dan lanjutkan sejauh yang aman tanpa mengarang status.
+Workflow ini berlaku umum; sesuaikan dengan jenis aplikasi dan sumber daya yang ada. Aturan khusus dari pengguna (misalnya larangan GitHub Actions, branch yang dibekukan, fitur yang ditunda, perangkat uji tertentu) dicatat di `AGENTS.md` proyek atau `docs/KONTEKS_PROYEK.md` dan **didahulukan** di atas aturan umum ini. **Pengecualian:** batas tegas pembayaran (Bagian 3.1) dan daftar tindakan yang selalu ditanyakan (Bagian 2.3 A) tidak bisa dilonggarkan oleh aturan proyek. Tindakan pada Bagian 2.3 B hanya bisa didelegasikan lewat kewenangan tertulis sesuai Bagian 8.1. Bila konteks tidak lengkap, nyatakan ketidakpastiannya dan lanjutkan sejauh yang aman tanpa mengarang status.
 
 ---
 

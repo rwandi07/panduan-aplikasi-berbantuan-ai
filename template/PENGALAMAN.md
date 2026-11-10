@@ -48,4 +48,4 @@
 - **Yang akhirnya berhasil:** file dikirim sedikit demi sedikit (per potongan), bukan sekaligus.
 - **Cara menghindarinya ke depan:** setiap fitur yang membaca file harus dites dengan file besar (> 1 GB). Pemeriksaan ini sudah ditambahkan ke validator.
 - **Berlaku untuk proyek lain?** Ya, untuk semua aplikasi yang membaca file.
-- **Terkait:** BUG-004, tag v0.4.1
+- **Terkait:** BUG-004, checkpoint/v0.4.1

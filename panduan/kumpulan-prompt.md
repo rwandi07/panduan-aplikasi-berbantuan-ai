@@ -39,7 +39,7 @@ Pelajari, lalu jawab STATUS PROYEK. Jangan mengerjakan apa pun dulu.
 
 ```text
 Aplikasi ini dibuat sebelum saya memakai panduan. Terapkan Jalur Adopsi (WORKFLOW_AI.md Bagian 3.3):
-tandai versi sekarang sebagai titik awal, isi docs/KONTEKS_PROYEK.md hanya dari yang bisa kamu pastikan,
+tandai kondisi sekarang sebagai checkpoint titik awal (tanya saya dulu sebelum membuat tag), isi docs/KONTEKS_PROYEK.md hanya dari yang bisa kamu pastikan,
 dan usulkan validator untuk fitur yang sekarang berjalan.
 Jangan mengubah atau merapikan kode aplikasinya.
 ```
@@ -147,16 +147,24 @@ Hanya untuk hal yang tidak bisa dites otomatis.
 
 ## Menyimpan dan mengembalikan versi
 
-### Menandai versi yang berhasil
+### Menandai checkpoint
 
 ```text
-Tes sudah BERHASIL. Commit, beri tag versi, perbarui CHANGELOG dan KONTEKS_PROYEK.
+Tes sudah BERHASIL. Commit, beri tag checkpoint, perbarui CHANGELOG dan KONTEKS_PROYEK.
 ```
 
-### Kembali ke versi sebelumnya
+### Memberi izin tetap untuk hal rutin
 
 ```text
-Kembalikan aplikasi ke versi [tag] yang terakhir berhasil.
+Tambahkan ke bagian "Kewenangan versi dan rilis" di AGENTS.md:
+AI boleh membuat tag checkpoint/* setelah validator BERHASIL.
+Merge ke main dan rilis publik selalu tanya saya dulu.
+```
+
+### Kembali ke checkpoint sebelumnya
+
+```text
+Kembalikan aplikasi ke [checkpoint/v0.3.0] yang terakhir berhasil.
 Jelaskan dulu apa yang akan terjadi sebelum melakukannya.
 ```
 
@@ -226,9 +234,17 @@ JELASKAN SEDERHANA.
 
 ## Rilis
 
+### Menyiapkan Release Candidate
+
 ```text
-MODE: RILIS. Siapkan file aplikasi untuk versi ini beserta catatan rilis singkat.
-Jangan unggah ke mana pun sebelum saya setujui.
+MODE: RILIS. Siapkan Release Candidate untuk versi ini: file aplikasi, hasil tes yang sebenarnya,
+checksum, dan catatan rilis singkat. Jangan terbitkan apa pun.
+```
+
+### Menerbitkan rilis publik
+
+```text
+RC [v0.3.0-rc.1] sudah saya periksa dan sesuai. Terbitkan sebagai rilis [v0.3.0].
 ```
 
 ---
