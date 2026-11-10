@@ -14,10 +14,13 @@
 
 - **Tujuan dan pengguna:**
 - **Platform:**
-- **Jalur:** Ringan / Lengkap (alasan:)
+- **Jalur:** Ringan / Lengkap / Adopsi (alasan:)
+- **Titik awal adopsi (khusus Jalur Adopsi):** (tag, misalnya `checkpoint/adopsi-awal`)
 - **Repositori:**
 - **Branch aktif:**
-- **Versi terakhir yang berhasil (tag):**
+- **Checkpoint terakhir yang berhasil:** (misalnya `checkpoint/v0.3.0`)
+- **Release Candidate terakhir:** (misalnya `v0.3.0-rc.1`, atau "belum ada")
+- **Rilis publik terakhir:** (misalnya `v0.2.0`, atau "belum pernah")
 - **Commit terakhir yang terverifikasi:**
 
 ## 3. Kriteria berhasil
@@ -37,7 +40,7 @@
 
 ## 5. Roadmap dan status tahap
 
-| Tahap | Kriteria selesai | Status (belum / sedang / PASS / FAIL) | Tag |
+| Tahap | Kriteria selesai | Status (belum / sedang / PASS / FAIL) | Tag checkpoint |
 |---|---|---|---|
 | 1 | | | |
 
@@ -52,26 +55,39 @@
 - **Tanggal dan lingkungan:** (perangkat, sistem operasi, versi)
 - **Validator:** BERHASIL / GAGAL (lokasi log:)
 - **Checklist manual:** PASS / FAIL / NOT TESTED
-- **Yang belum dites dan alasannya:**
+- **Tingkat Bukti fitur utama (0–4):**
+- **Yang belum dites dan alasannya:** (rujuk ke Catatan Persetujuan di bawah bila ada)
+
+### Catatan Persetujuan
+
+> Hal yang belum terbukti tetapi disetujui untuk dilanjutkan (`SETUJU DENGAN CATATAN`). Catatan yang masih terbuka wajib muncul di "Keterbatasan yang Diketahui" pada Release Candidate dan catatan rilis.
+
+| No | Yang belum dites | Alasan | Bukti pengganti (Tingkat) | Risiko bila gagal | Kapan dites ulang | Status |
+|---|---|---|---|---|---|---|
+| CP-001 | | | | | | Terbuka / Selesai (tanggal) |
 
 ## 8. Temuan terbuka yang penting
 
 (Rujuk ke `docs/REGISTER_TEMUAN.md`. Tulis ID dan judul singkat saja.)
 
-## 9. Aturan khusus proyek
+## 9. Pengalaman penting
+
+(Rujuk ke `docs/PENGALAMAN.md`. Tulis 1–3 rambu terpenting saja.)
+
+## 10. Aturan khusus proyek
 
 (Larangan dan batasan yang mengalahkan aturan umum, misalnya: "jangan pakai GitHub Actions", "branch release dibekukan".)
 
-## 10. Persetujuan
+## 11. Persetujuan
 
 - **Sudah disetujui, belum dikerjakan:**
 - **Belum disetujui / menunggu keputusan:**
 
-## 11. Langkah berikutnya
+## 12. Langkah berikutnya
 
 1.
 2.
 
-## 12. Cara build dan menjalankan
+## 13. Cara build dan menjalankan
 
 (Ringkas, atau rujuk ke `BUILD.md`. Hanya perintah yang sudah terbukti berjalan.)

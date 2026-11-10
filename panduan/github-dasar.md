@@ -20,8 +20,9 @@ Programmer profesional tidak mengandalkan ingatan. Mereka mencatat semuanya: kod
 | **Branch** | Kertas coretan | Tempat mencoba perubahan sebelum disalin ke buku utama |
 | **main** | Buku utama | Versi yang dianggap resmi |
 | **Merge** | Menyalin coretan ke buku utama | Dilakukan setelah perubahan terbukti berhasil |
-| **Tag / Release** | Pembatas halaman | "Versi ini sudah dites dan berhasil" |
-| **Folder `docs/`** | Catatan keputusan | Konteks proyek, temuan, serah-terima |
+| **Tag checkpoint** | Pembatas halaman | "Sampai sini tesnya lulus"; belum tentu siap dirilis |
+| **Release** | Buku resmi diterbitkan | Versi yang resmi tersedia untuk pengguna |
+| **Folder `docs/`** | Catatan keputusan | Konteks proyek, temuan, serah-terima, pengalaman |
 | **AGENTS.md / CLAUDE.md** | Halaman "baca ini dulu" untuk AI | Aturan dan konteks yang dibaca AI sebelum bekerja |
 | **.gitignore** | Daftar "jangan dicatat" | File rahasia atau sampah yang tidak boleh masuk buku |
 | **Issues** | Kotak saran | Tempat mencatat masalah atau ide |
@@ -68,12 +69,13 @@ docs/
   WORKFLOW_AI.md        ← salinan aturan kerja untuk AI
   KONTEKS_PROYEK.md     ← status proyek dan serah-terima
   REGISTER_TEMUAN.md    ← temuan audit (jalur lengkap)
+  PENGALAMAN.md         ← Eksplorasi Pengalaman: pelajaran agar tidak terulang
 VALIDASI.bat / validasi.sh   ← tes yang bisa kamu jalankan sendiri
 ```
 
 Kamu tidak perlu membuatnya sendiri. Minta AI:
 
-> *"Siapkan struktur buku catatan sesuai panduan: README, AGENTS.md, CHANGELOG, BUILD, .gitignore, docs/WORKFLOW_AI.md, dan docs/KONTEKS_PROYEK.md."*
+> *"Siapkan struktur buku catatan sesuai panduan: README, AGENTS.md, CHANGELOG, BUILD, .gitignore, docs/WORKFLOW_AI.md, docs/KONTEKS_PROYEK.md, dan docs/PENGALAMAN.md."*
 
 ---
 
@@ -88,16 +90,33 @@ Pesan commit yang baik menjawab *apa* dan *kenapa*:
 
 *Kenapa:* bulan depan kamu (atau AI lain) bisa membaca riwayatnya dan mengerti apa yang terjadi.
 
-### 2. Tandai versi yang berhasil
+### 2. Tandai checkpoint, lalu rilis secara terpisah
 
-Setiap kali validator **BERHASIL**, beri tag, misalnya `v0.3.0`.
+Ada empat kegiatan yang sering tertukar. Bedakan dengan jelas:
 
-*Kenapa:* kalau perubahan berikutnya merusak aplikasi, kamu bisa kembali ke versi ini dalam satu langkah.
+| Kegiatan | Dalam buku catatan | Contoh nama | Siapa yang memutuskan |
+|---|---|---|---|
+| **Commit** | Entri harian | (pesan commit) | AI, selama dalam lingkup yang kamu setujui |
+| **Tag checkpoint** | Pembatas halaman: "sampai sini tesnya lulus" | `checkpoint/v0.3.0` | AI boleh, **kalau kamu sudah menuliskan izinnya** di `AGENTS.md`; kalau belum, AI bertanya dulu |
+| **Release Candidate (RC)** | Draf terbitan untuk diperiksa terakhir | `v0.3.0-rc.1` | AI menyiapkan, kamu memeriksa |
+| **Rilis publik** | Buku resmi diterbitkan | `v0.3.0` | **Kamu**, kecuali sudah kamu izinkan secara tertulis |
+
+Setiap kali validator **BERHASIL**, tandai sebagai checkpoint.
+
+*Kenapa:* kalau perubahan berikutnya merusak aplikasi, kamu bisa kembali ke checkpoint ini dalam satu langkah.
+
+Yang perlu diingat:
+- Tes lulus belum berarti siap dirilis.
+- Checkpoint bukan rilis publik.
+- Release Candidate belum berarti disetujui.
+- Build berhasil bukan alasan untuk merge atau menerbitkan.
 
 Cara membaca nomor versi `v1.4.2`:
 - angka pertama (1): perubahan besar;
 - angka kedua (4): fitur baru;
 - angka ketiga (2): perbaikan kecil.
+
+Supaya AI tidak perlu bertanya setiap kali untuk hal rutin, tulis izinmu di bagian "Kewenangan versi dan rilis" pada `AGENTS.md`. Contoh: *"AI boleh membuat tag checkpoint setelah validator BERHASIL. Merge ke main dan rilis publik selalu tanya saya."*
 
 ### 3. Coba dulu di branch (jalur lengkap)
 
@@ -132,6 +151,6 @@ Simpan cadangan di luar repo (flashdisk, penyimpanan cloud pribadi):
 
 - *"Apa yang terjadi kalau saya menjalankan perintah ini?"* Minta AI menjelaskan **sebelum** menjalankannya.
 - *"Saya takut merusak sesuatu. Tunjukkan dulu apa yang akan berubah."*
-- *"Kembalikan ke versi terakhir yang berhasil."* Inilah gunanya tag.
+- *"Kembalikan ke checkpoint terakhir yang berhasil."* Inilah gunanya tag checkpoint.
 
 Selama perubahan sudah di-commit, hampir semua kesalahan bisa dibatalkan. Yang benar-benar berbahaya hanya hal-hal yang selalu memerlukan izinmu: menghapus, `force push`, dan menulis ulang riwayat.

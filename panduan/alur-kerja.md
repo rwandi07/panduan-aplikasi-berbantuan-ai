@@ -2,7 +2,7 @@
 
 Halaman ini menuntunmu melewati satu proyek dari awal sampai akhir. Di setiap langkah ada **contoh kalimat** yang bisa kamu tiru saat bicara dengan AI.
 
-Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tidak perlu menghafalnya; cukup lampirkan ke AI.
+Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tidak perlu menghafalnya; cukup lampirkan ke AI. Semua contoh kalimat di halaman ini juga dikumpulkan di [kumpulan-prompt.md](kumpulan-prompt.md).
 
 ---
 
@@ -14,8 +14,8 @@ Aturan lengkap untuk AI-nya ada di [WORKFLOW_AI.md](../WORKFLOW_AI.md). Kamu tid
 3. Rancang tampilan (mockup) dan teknis
 4. Bangun
 5. Tes dan buktikan
-6. Tandai versi yang berhasil
-7. Rilis / pakai
+6. Tandai checkpoint
+7. Release Candidate, lalu rilis
    ... lalu ulangi dari langkah 3 untuk fitur berikutnya
 ```
 
@@ -32,6 +32,21 @@ Tidak semua aplikasi butuh proses penuh.
 
 > *"Ini ide aplikasinya: [jelaskan]. Menurutmu jalur Ringan atau Lengkap? Jelaskan alasannya."*
 
+### Aplikasi lama: Jalur Adopsi
+
+Kalau aplikasinya sudah ada sebelum kamu memakai panduan ini, jangan perlakukan seperti proyek baru. Memaksa kode lama mengikuti panduan justru berisiko merusak yang sudah berjalan. Terapkan sebagian saja:
+
+1. Tandai kondisi sekarang sebagai checkpoint titik awal.
+2. AI mengisi `docs/KONTEKS_PROYEK.md` dari hal yang bisa ia pastikan; sisanya "belum diketahui".
+3. Buat validator untuk fitur yang sekarang berjalan, sebagai patokan.
+4. Pekerjaan **baru** setelah itu mengikuti panduan.
+
+Langkah Discovery dan rancangan awal dilewati, karena aplikasinya sudah ada. Prompt-nya ada di [kumpulan-prompt.md](kumpulan-prompt.md).
+
+### Satu hal yang tidak dikerjakan: pembayaran
+
+Panduan ini tidak dipakai untuk membangun fungsi pembayaran: payment gateway, bayar otomatis, menyimpan data kartu, memindahkan saldo, atau order otomatis ke broker. AI akan berhenti dan menjelaskan alasannya. Baca [batas-pembayaran.md](batas-pembayaran.md).
+
 ---
 
 ## Langkah 1 — Ide dan kebutuhan
@@ -44,7 +59,9 @@ Contoh kriteria berhasil yang baik:
 
 > *"MODE: DISKUSI. Saya ingin membuat aplikasi [ide]. Bantu saya merapikan kebutuhannya: siapa penggunanya, fitur wajib, fitur tambahan, batasan, dan kriteria berhasil dengan bahasa saya."*
 
-**Gerbang:** kamu setuju dengan ringkasan kebutuhan dan kriteria berhasilnya.
+Ini disebut **Diskusi Awal**. AI seharusnya **bertanya dulu** sebelum merancang: apa saja yang masih belum jelas, dan asumsi apa yang akan dipakai kalau kamu tidak menjawab. Jawab pertanyaannya. Kesalahpahaman di awal adalah penyebab kerja ulang yang paling mahal.
+
+**Gerbang:** kamu setuju dengan ringkasan kebutuhan dan kriteria berhasilnya, dan pertanyaan AI sudah terjawab.
 
 ---
 
@@ -74,7 +91,9 @@ Lalu tanggapi: *"Saya suka warna yang nomor 2, tapi tata letak yang nomor 1."* L
 
 > *"Usulkan teknologi yang cocok untuk aplikasi ini dan untuk laptop saya (lihat profil). Jelaskan dengan bahasa awam kenapa memilih itu, dan apa risikonya. Buat roadmap bertahap, setiap tahap dengan kriteria selesai dan cara membuktikannya."*
 
-**Gerbang:** kamu mengetik `SETUJU RANCANGAN`.
+Sebelum kamu menyetujui, AI wajib memberi **Ringkasan Keputusan**: apa yang diputuskan, pilihan dan konsekuensinya, rekomendasinya, bukti yang ada, dan cara membatalkan kalau keliru. Kalau ada yang tidak kamu pahami, jangan setujui dulu. Tanyakan, atau ketik `JELASKAN SEDERHANA`. Persetujuan tanpa pemahaman hanya formalitas.
+
+**Gerbang:** kamu memahami Ringkasan Keputusan-nya, lalu mengetik `SETUJU RANCANGAN`.
 
 ---
 
@@ -92,7 +111,7 @@ Kalau AI memintamu memasang sesuatu dan kamu ragu laptopmu kuat:
 
 ## Langkah 5 — Tes dan buktikan
 
-Jangan terima "sudah selesai" begitu saja. Minta bukti yang bisa kamu jalankan sendiri.
+Jangan terima "sudah selesai" begitu saja. Minta bukti yang bisa kamu jalankan sendiri, dan perhatikan **Tingkat Bukti** yang disebut AI (0 sampai 4). Kalau ada tes yang tidak bisa kamu lakukan, misalnya butuh perangkat yang tidak kamu punya, gunakan `SETUJU DENGAN CATATAN`. Penjelasannya di [tes-sendiri.md](tes-sendiri.md).
 
 > *"Tambahkan pemeriksaan untuk fitur ini ke validator. Saya akan menjalankannya dan mengirim log-nya."*
 
@@ -102,21 +121,35 @@ Lalu jalankan validatornya, misalnya klik dua kali `VALIDASI.bat`. Kalau hasilny
 
 ---
 
-## Langkah 6 — Tandai versi yang berhasil
+## Langkah 6 — Tandai checkpoint
 
-Begitu tahap ini terbukti berhasil, tandai versinya. Ibarat menempel pembatas di buku catatan: "sampai halaman ini, semuanya berjalan."
+Begitu tahap ini terbukti berhasil, tandai sebagai **checkpoint**. Ibarat menempel pembatas di buku catatan: "sampai halaman ini, tesnya lulus."
 
-> *"Tes sudah BERHASIL. Commit, beri tag versi, perbarui CHANGELOG dan KONTEKS_PROYEK."*
+> *"Tes sudah BERHASIL. Commit, beri tag checkpoint, perbarui CHANGELOG dan KONTEKS_PROYEK."*
+
+Checkpoint **bukan** rilis. Tes yang lulus belum berarti aplikasinya siap dibagikan. Kalau kamu ingin AI membuat checkpoint tanpa bertanya setiap kali, tulis izinnya di bagian "Kewenangan versi dan rilis" pada `AGENTS.md`.
 
 Kalau suatu saat perubahan berikutnya merusak aplikasi:
 
-> *"Kembalikan aplikasi ke versi v0.3.0 yang terakhir berhasil. Jelaskan dulu apa yang akan terjadi sebelum melakukannya."*
+> *"Kembalikan aplikasi ke checkpoint/v0.3.0 yang terakhir berhasil. Jelaskan dulu apa yang akan terjadi sebelum melakukannya."*
 
 ---
 
-## Langkah 7 — Rilis atau pakai
+## Langkah 7 — Release Candidate, lalu rilis
 
-> *"MODE: RILIS. Siapkan file aplikasi (APK/EXE/lainnya) untuk versi ini, beserta catatan rilis singkat. Jangan unggah ke mana pun sebelum saya setujui."*
+Rilis dilakukan dua tahap, supaya ada pemeriksaan terakhir sebelum aplikasi dipakai atau dibagikan.
+
+**a. Release Candidate (RC):** AI menyiapkan versi kandidat, misalnya `v0.3.0-rc.1`, beserta file aplikasi, hasil tes, checksum (sidik jari file untuk memastikan tidak berubah), dan catatan rilis.
+
+> *"MODE: RILIS. Siapkan Release Candidate untuk versi ini: file aplikasi (APK/EXE/lainnya), hasil tes, checksum, dan catatan rilis singkat. Jangan terbitkan apa pun."*
+
+Coba RC-nya sendiri. Jalankan checklist tes manual.
+
+**b. Rilis publik:** setelah kamu puas, baru diterbitkan sebagai versi resmi, misalnya `v0.3.0`.
+
+> *"RC sudah saya periksa dan sesuai. Terbitkan sebagai rilis v0.3.0."*
+
+Merge ke `main`, membuat GitHub Release, dan mengunggah ke toko aplikasi selalu menunggu persetujuanmu, kecuali kamu sudah mengizinkannya secara tertulis.
 
 ---
 
@@ -132,15 +165,44 @@ Setelah membaca hasilnya, kamu yang memilih:
 
 Ingat: tidak semua temuan harus diperbaiki. Ada kelemahan yang wajar diterima.
 
+### Audit dengan mata segar (opsional)
+
+AI yang ikut membangun cenderung tidak melihat kesalahannya sendiri. Kalau kamu punya lebih dari satu jenis AI (misalnya membangun dengan satu AI, berlangganan AI lain juga), minta AI yang **tidak ikut membangun** untuk mengaudit di antara tahap besar. Kalau hanya punya satu AI, buka percakapan baru tanpa riwayat pembangunan. Hasilnya tidak sebaik AI yang berbeda, tapi tetap memberi sudut pandang baru. Prompt-nya ada di [kumpulan-prompt.md](kumpulan-prompt.md).
+
 ---
 
-## Pindah chat atau pindah AI
+## Kapan mulai percakapan baru
 
-Percakapan AI punya batas panjang, dan kamu mungkin ingin berganti AI. Sebelum pindah:
+Percakapan yang terlalu panjang membuat AI mudah lupa dan keliru. Pegang prinsip ini: **satu tugas besar, satu percakapan.**
 
-> *"HANDOFF PROYEK."*
+Mulai percakapan baru kalau kamu melihat salah satu tanda ini:
+1. AI sudah **3 kali gagal** memperbaiki masalah yang sama.
+2. AI **lupa atau bertentangan** dengan keputusan yang sudah disepakati.
+3. AI **salah menyebut nama file**, atau mengulang kesalahan yang sudah diperbaiki.
+4. Percakapan sudah **sangat panjang** atau balasan terasa melambat.
+5. Kamu **pindah ke tugas yang berbeda**.
 
-AI akan memperbarui `docs/KONTEKS_PROYEK.md`. Di chat baru, cukup minta AI membaca file itu. Karena semuanya tercatat di GitHub, kamu tidak perlu menjelaskan ulang dari nol.
+AI yang mengikuti panduan ini juga akan menyarankannya sendiri. Caranya:
+
+1. Di percakapan lama: *"HANDOFF PROYEK."* AI memperbarui `docs/KONTEKS_PROYEK.md`.
+2. Di percakapan baru: minta AI membaca `docs/KONTEKS_PROYEK.md` dan `docs/PENGALAMAN.md`, lalu jawab `STATUS PROYEK`.
+
+Karena semuanya tercatat di GitHub, kamu tidak perlu menjelaskan ulang dari nol. Cara yang sama berlaku kalau kamu ingin **berganti AI**.
+
+---
+
+## Eksplorasi Pengalaman
+
+Programmer berpengalaman bukan orang yang tidak pernah salah, tapi orang yang tidak mengulang kesalahan yang sama. Setiap proyek punya file `docs/PENGALAMAN.md` untuk mencatat:
+- masalah sulit yang akhirnya terpecahkan;
+- cara yang dicoba tapi gagal;
+- kejutan, misalnya alat atau perangkat yang tidak berperilaku seperti perkiraan.
+
+Setiap catatan berisi: apa yang terjadi, penyebabnya, cara menghindarinya, dan apakah berlaku untuk proyek lain.
+
+> *"CATAT PENGALAMAN. Masalah [jelaskan] tadi akhirnya selesai."*
+
+Pengalaman yang berlaku untuk semua proyek, misalnya "di laptop saya, emulator Android selalu terlalu berat", pindahkan ke **Profil Pengembang**-mu supaya ikut dibaca AI di proyek berikutnya.
 
 ---
 

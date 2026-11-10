@@ -107,3 +107,40 @@ Tips umum:
 | **NOT TESTED / DILEWATI** | Tes belum atau tidak bisa dijalankan |
 
 Waspadai kalimat seperti *"seharusnya sudah berfungsi"* atau *"build berhasil, jadi aplikasinya sudah jalan"*. Itu dugaan, bukan bukti. Tanyakan: *"Tes apa yang benar-benar sudah dijalankan? Bagaimana saya membuktikannya sendiri?"*
+
+### Tingkat Bukti
+
+Tidak semua bukti sama kuatnya. AI yang mengikuti panduan ini menyebut **Tingkat Bukti** untuk setiap klaimnya:
+
+| Tingkat | Artinya | Seberapa bisa dipercaya |
+|---|---|---|
+| **0** | Baru klaim: "seharusnya sudah bisa" | Belum bisa dipercaya |
+| **1** | Build berhasil atau kode sudah dibaca ulang | Lemah |
+| **2** | Tes dijalankan AI di komputernya sendiri | Cukup, untuk checkpoint |
+| **3** | Validator kamu jalankan di perangkatmu | Kuat, untuk Release Candidate |
+| **4** | Sudah dipakai sungguhan atau checklist manual lulus | Paling kuat, untuk rilis |
+
+Ingat: kalau AI menulis kode **dan** tesnya sendiri, keduanya bisa salah dengan cara yang sama. Karena itu kriteria berhasil yang kamu tulis sendiri penting.
+
+---
+
+## 7. Kalau kamu tidak bisa melakukan tes tertentu
+
+Kadang sebuah tes memang tidak mungkin kamu lakukan. Misalnya fitur kirim file antar dua laptop, padahal kamu hanya punya satu laptop. Pekerjaan tidak harus berhenti. Ketik:
+
+> *"SETUJU DENGAN CATATAN."*
+
+AI akan mencari bukti pengganti dulu (misalnya tes laptop ke HP), lalu menyusun **Catatan Persetujuan**:
+
+| Isi | Contoh |
+|---|---|
+| Yang belum dites | Transfer file antar dua laptop |
+| Alasan | Hanya punya satu laptop |
+| Bukti pengganti | Laptop ke HP berhasil (Tingkat 3) |
+| Risiko bila gagal | Dua laptop mungkin tidak saling menemukan |
+| Kapan dites ulang | Saat ada laptop kedua, atau sebelum rilis |
+
+Yang perlu kamu tahu:
+- Catatan **tidak membuat** bagian itu dianggap sudah terbukti. Statusnya tetap "belum dites", hanya saja kamu sadar dan setuju melanjutkan.
+- Catatan **tidak hilang.** Semuanya dicatat di `docs/KONTEKS_PROYEK.md` dan akan muncul lagi di catatan rilis sebagai "Keterbatasan yang Diketahui".
+- Kalau yang belum terbukti adalah **fitur utama**, AI akan mengatakannya terus terang. Kamu tetap boleh melanjutkan, tapi dengan mata terbuka.

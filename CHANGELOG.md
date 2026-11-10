@@ -2,6 +2,33 @@
 
 Format nomor versi: **besar.kecil**. Angka besar berubah bila cara kerja berubah mendasar; angka kecil untuk penambahan dan perbaikan.
 
+## v1.3 (10 November 2026)
+
+**Ringkasan sederhana:** panduan kini punya prinsip utama tentang kebebasan AI, kualitas bukti, dan keputusan yang dipahami manusia; batas tegas untuk pembayaran; cara menerapkan panduan pada aplikasi lama, kebiasaan mencatat pengalaman, aturan kapan memulai percakapan baru, kumpulan prompt siap salin, aturan tegas yang membedakan checkpoint dari rilis, dan subjudul "Human-Controlled AI Development Framework".
+
+### Baru
+- **Prinsip utama** (`WORKFLOW_AI.md` Bagian 1): AI bebas bertindak sebanding dengan seberapa mudah tindakannya dibatalkan; kepercayaan pada hasilnya sebanding dengan kualitas bukti; setiap keputusan untuk manusia disertai penjelasan, pilihan, dan konsekuensi yang bisa dipahami. Tujuannya mengurangi pekerjaan manusia tanpa mengurangi pemahaman dan kendalinya.
+- **Ringkasan Keputusan** (Bagian 2.4): format wajib setiap kali AI meminta persetujuan, karena persetujuan tanpa pemahaman hanya formalitas.
+- **Tingkat Bukti 0–4** (Bagian 10.4), dengan tingkat minimum untuk checkpoint, Release Candidate, dan rilis publik.
+- **Persetujuan dengan Catatan** (Bagian 2.5) dan perintah `SETUJU DENGAN CATATAN`: pekerjaan tetap berjalan walau ada tes yang tidak bisa dilakukan pengguna; yang belum terbukti dicatat, tidak dianggap lulus, dan muncul di "Keterbatasan yang Diketahui" pada catatan rilis.
+- **Batas tegas pembayaran** (`WORKFLOW_AI.md` Bagian 3.1, `panduan/batas-pembayaran.md`): fungsi yang memproses, memulai, atau menjadwalkan pembayaran berada di luar cakupan. AI wajib berhenti, menjelaskan risikonya dengan bahasa awam, dan menyarankan programmer profesional atau platform jadi. Batas ini tidak bisa dibuka oleh persetujuan atau aturan proyek.
+- **Jalur Adopsi** untuk aplikasi yang sudah ada: tandai titik awal, isi buku catatan dari yang terverifikasi, buat validator untuk fitur yang berjalan, tanpa merombak kode.
+- **Gerbang Diskusi Awal:** AI wajib mendaftar hal yang ambigu dan asumsinya, lalu menunggu jawaban, sebelum mengajukan rancangan.
+- **Kapan memulai percakapan baru:** lima tanda konkret dan prinsip "satu tugas besar, satu percakapan".
+- **Eksplorasi Pengalaman** (`docs/PENGALAMAN.md`, `template/PENGALAMAN.md`) dan perintah `CATAT PENGALAMAN`. Pengalaman lintas proyek dipindahkan ke Profil Pengembang.
+- **Audit dengan mata segar** (opsional): audit oleh AI lain yang tidak ikut membangun, atau percakapan baru bila hanya punya satu AI.
+- **Kumpulan prompt** siap salin untuk setiap tahap (`panduan/kumpulan-prompt.md`).
+- **Judul dua tingkat:** "Panduan Pengembangan Aplikasi Berbantuan AI" sebagai nama utama, dengan subjudul "Human-Controlled AI Development Framework" yang menjelaskan pendekatannya. Nama repositori tidak berubah.
+- **Manajemen versi, tag, dan rilis** (`WORKFLOW_AI.md` Bagian 8.1): empat kegiatan dibedakan tegas, yaitu commit pengembangan, tag checkpoint internal (`checkpoint/v0.3.0`), Release Candidate (`v0.3.0-rc.1`), dan rilis publik (`v0.3.0`). Tes PASS, tag internal, RC, dan build berhasil tidak otomatis berarti boleh merilis.
+- **Kewenangan tertulis:** bagian "Kewenangan versi dan rilis" di template `AGENTS.md`. AI boleh membuat tag checkpoint, RC, merge, atau rilis tanpa bertanya hanya bila diizinkan di sana.
+
+### Diubah
+- Daftar izin (`WORKFLOW_AI.md` Bagian 2.3) dibagi dua: **A** selalu ditanyakan (tidak bisa didelegasikan) dan **B** ditanyakan kecuali kewenangannya sudah tertulis (tag, RC, merge, rilis).
+- Istilah "tandai versi" diganti "tag checkpoint" di seluruh panduan; alur rilis kini dua tahap (RC, lalu rilis publik).
+- `AGENTS.md`, `KONTEKS_PROYEK.md`, dan `PROFIL_PENGEMBANG.md` di folder template mengikuti aturan baru.
+- Glosarium ditambah: autodebet, checksum, Eksplorasi Pengalaman, Gerbang Diskusi Awal, Jalur Adopsi, Keterbatasan yang Diketahui, konteks percakapan, payment gateway, Persetujuan dengan Catatan, Release Candidate, Ringkasan Keputusan, tag checkpoint, Tingkat Bukti.
+- Aturan proyek tetap mengalahkan aturan umum, kecuali batas pembayaran dan daftar tindakan yang selalu butuh izin.
+
 ## v1.2 (10 November 2026)
 
 **Ringkasan sederhana:** panduan diubah dari "aturan untuk AI" menjadi paket lengkap untuk pengembang tingkat menengah yang bukan programmer profesional: ada panduan untuk manusia, aturan untuk AI, dan template siap pakai.
