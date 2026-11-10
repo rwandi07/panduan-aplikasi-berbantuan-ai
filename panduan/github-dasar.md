@@ -48,12 +48,63 @@ Kamu **tidak perlu menghafal perintah Git**. Yang perlu kamu pahami adalah *arti
 2. **Buat repositori** untuk setiap aplikasi:
    - pilih **Private** untuk aplikasi pribadi;
    - centang "Add a README file" bila kamu belum punya file apa pun.
-3. **Pilih cara bekerja dengan repo:**
-   - **AI yang bisa mengakses GitHub langsung** (agen coding): beri akses ke repo, AI yang mengurus commit dan push.
-   - **GitHub Desktop** (aplikasi gratis untuk Windows dan macOS): untuk menyimpan perubahan dengan klik, tanpa mengetik perintah.
-   - **Situs GitHub:** untuk mengunggah file lewat browser ("Add file → Upload files"). Cocok untuk perubahan kecil.
+3. **Ketahui tingkat akses AI-mu ke GitHub** (lihat bagian berikut), lalu tulis di Profil Pengembang.
 
-Kalau AI-mu hanya chat biasa tanpa akses GitHub, minta: *"Berikan file lengkapnya dan langkah mengunggahnya ke GitHub."*
+---
+
+## Tingkat akses AI ke GitHub
+
+**GitHub gratis.** Yang sering butuh langganan berbayar adalah kemampuan AI untuk **masuk langsung** ke GitHub. Ketentuannya berbeda-beda per penyedia AI dan sering berubah. Kabar baiknya: **panduan ini tetap bisa dipakai sepenuhnya dengan AI gratis.**
+
+| Tingkat | Kondisi | Siapa mengurus GitHub |
+|---|---|---|
+| **1. Tanpa akses** | Chat AI biasa, termasuk versi gratis | **Kamu** yang mengunggah. AI menyiapkan file utuh, daftar file, dan pesan commit. |
+| **2. Hanya membaca** | Repo dilampirkan atau disambungkan hanya untuk dibaca | AI membaca langsung; **kamu** tetap yang mengunggah. |
+| **3. Bisa menulis** | Agen coding yang tersambung ke repo | AI mengurus commit dan branch; kamu yang menyetujui merge dan rilis. |
+
+Semua aturan panduan berlaku sama di ketiga tingkat. Bedanya hanya siapa yang mengetik ke GitHub. Di tingkat 1, kendalimu justru paling kuat: tidak ada perubahan yang masuk tanpa kamu unggah sendiri.
+
+Alat untuk mengunggah di tingkat 1 dan 2:
+- **Situs GitHub** lewat browser. Tidak perlu memasang apa pun; cocok untuk perubahan kecil.
+- **GitHub Desktop**, aplikasi gratis untuk Windows dan macOS. Lebih nyaman untuk banyak file, dan bisa membuat tag checkpoint.
+
+---
+
+## Mengunggah perubahan lewat situs GitHub (tingkat 1 dan 2)
+
+AI akan memberimu: **daftar file yang berubah**, **isi file utuh**, dan **pesan commit**.
+
+**Sebelum AI mengubah sebuah file**, lampirkan atau tempelkan isi file itu dari repo, supaya AI bekerja dari versi terbaru dan tidak menimpa perubahan lain.
+
+**File baru atau banyak file sekaligus:**
+1. Buka repo, masuk ke folder tujuan.
+2. Klik **Add file → Upload files**, lalu seret file ke halaman. File dengan nama yang sama akan diganti.
+3. Tempel pesan commit dari AI.
+4. Pilih **Commit directly to the main branch**, atau, untuk perubahan besar, **Create a new branch** supaya bisa diperiksa dulu lewat pull request.
+5. Klik **Commit changes**.
+
+**Mengubah satu file:**
+1. Buka file-nya, klik ikon **pensil** (Edit this file).
+2. Hapus semua isinya, tempel isi baru dari AI.
+3. Klik **Commit changes**, tempel pesan commit, lalu konfirmasi.
+
+**Menghapus file** (hanya setelah kamu setuju): buka file-nya, klik menu **⋯**, pilih **Delete file**, lalu commit.
+
+**Setelah mengunggah**, beri tahu AI kode commit-nya: tujuh karakter pertama yang terlihat di riwayat **Commits**, misalnya `0529fbd`.
+
+---
+
+## Checkpoint dan kembali ke versi lama tanpa tag
+
+Di situs GitHub, membuat tag checkpoint tidak semudah di GitHub Desktop atau lewat agen AI. Tidak masalah:
+- **Catat checkpoint sebagai kode commit** di `docs/KONTEKS_PROYEK.md`, misalnya "checkpoint v0.3.0 = commit `0529fbd`".
+- **Kalau pakai GitHub Desktop:** buka tab **History**, klik kanan commit yang berhasil, pilih **Create Tag**, beri nama `checkpoint/v0.3.0`, lalu **Push**.
+
+**Kembali ke checkpoint lewat situs GitHub:**
+1. Buka riwayat **Commits**, klik commit checkpoint-nya.
+2. Klik **Browse files** untuk melihat isi repo persis pada saat itu.
+3. Klik **Code → Download ZIP** untuk mengunduh semua file versi tersebut.
+4. Minta AI membantu memulihkan file yang perlu dari ZIP itu, lalu unggah sebagai commit baru.
 
 ---
 

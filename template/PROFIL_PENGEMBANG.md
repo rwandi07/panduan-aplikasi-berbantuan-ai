@@ -30,6 +30,8 @@
 
 - **AI:** (contoh: ChatGPT Plus, Claude, Gemini; sebutkan mode agen bila ada)
 - **GitHub:** (contoh: akun ada; memakai GitHub Desktop / lewat AI / lewat situs)
+- **Tingkat akses AI ke GitHub:** (per AI yang dipakai; contoh: ChatGPT gratis = 1 tanpa akses; agen coding X = 3 bisa menulis)
+  - 1 = tanpa akses (saya yang mengunggah) · 2 = hanya membaca · 3 = bisa menulis
 - **Alat lain yang sudah terpasang:** (contoh: Python 3.12, Android Studio, VS Code)
 
 ## Batasan dan preferensi kerja

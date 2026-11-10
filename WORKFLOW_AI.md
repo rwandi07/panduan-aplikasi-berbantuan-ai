@@ -2,7 +2,7 @@
 ## Human-Controlled AI Development Framework
 ### Aturan kerja untuk AI yang membantu pengembang
 
-**Versi:** 1.3 (10 November 2026)
+**Versi:** 1.4 (10 November 2026)
 **Berlaku untuk:** asisten AI apa pun (chat AI, agen coding, AI dengan akses file atau terminal) dan aplikasi apa pun: web, Android, iOS, Windows, macOS, Linux, backend, atau lintas platform.
 **Pasangan dokumen ini:** panduan untuk manusia ada di `README.md` dan folder `panduan/`. Template ada di folder `template/`. Bila dokumen ini disalin ke repo aplikasi, rujukan `panduan/` dan `template/` mengacu ke repo sumbernya: https://github.com/rwandi07/panduan-aplikasi-berbantuan-ai
 
@@ -20,6 +20,7 @@ Konsekuensinya bagi AI:
 2. **Jelaskan dengan bahasa awam dulu, detail teknis belakangan.** Istilah teknis yang muncul pertama kali dijelaskan dalam satu kalimat.
 3. **Ajarkan alasannya.** Saat menerapkan kebiasaan profesional (commit, tag, tes, branch), sebutkan singkat *kenapa* itu dilakukan. Pengguna belajar dari setiap proyek.
 4. **Baca Profil Pengembang** (`template/PROFIL_PENGEMBANG.md` atau yang diberikan pengguna) bila tersedia. Sesuaikan bahasa, alat, dan saran dengan tingkat keahlian dan perangkat yang tertulis di sana. Bila tidak ada, tanyakan seperlunya; jangan menebak spesifikasi perangkat.
+5. **Ketahui tingkat aksesmu ke GitHub** (Bagian 8.2) sebelum bekerja: tanpa akses, hanya membaca, atau bisa menulis. Bila tidak tertulis di profil atau tidak jelas, tanyakan atau periksa alat yang benar-benar kamu punya. Jangan menganggap punya akses tulis. Workflow ini **tidak mensyaratkan langganan AI berbayar**; semua aturannya berlaku di tingkat akses mana pun.
 
 ---
 
@@ -317,7 +318,7 @@ Aturan:
 1. **Di awal sesi, baca buku catatan dulu** (`AGENTS.md`, `docs/KONTEKS_PROYEK.md`, `docs/PENGALAMAN.md`) sebelum bekerja.
 2. **Di akhir sesi, perbarui `docs/KONTEKS_PROYEK.md`.**
 3. **Tandai checkpoint yang berhasil** dengan tag internal setelah gerbang PASS (Bagian 8.1). *Kenapa:* bila perubahan berikutnya merusak aplikasi, pengguna bisa kembali dalam satu langkah.
-4. **Bila AI tidak punya akses repositori,** berikan file lengkap dan langkah unggah yang jelas (lewat GitHub Desktop atau situs GitHub), lalu minta pengguna mengonfirmasi.
+4. **Bekerja sesuai tingkat akses** (Bagian 8.2). Bila AI tidak punya akses tulis, pengguna yang mengunggah; AI menyiapkan semuanya agar unggahan itu mudah dan tidak keliru.
 5. **Pengguna tidak perlu menghafal perintah Git.** AI boleh mengetik perintahnya, tetapi wajib menjelaskan artinya dalam satu kalimat.
 
 ### 8.1 Manajemen versi, tag, dan rilis
@@ -334,7 +335,7 @@ Bedakan empat kegiatan berikut. Masing-masing punya arti dan izin yang berbeda.
 Rincian:
 
 1. **Commit pengembangan** boleh dilakukan selama pekerjaan berada dalam lingkup yang sudah disetujui.
-2. **Tag checkpoint internal** bukan bukti bahwa seluruh aplikasi bebas masalah; ia hanya menandai bahwa kriteria tes tertentu terpenuhi pada commit itu. Gunakan awalan `checkpoint/` atau `test-pass/` secara konsisten agar tidak tertukar dengan versi rilis.
+2. **Tag checkpoint internal** bukan bukti bahwa seluruh aplikasi bebas masalah; ia hanya menandai bahwa kriteria tes tertentu terpenuhi pada commit itu. Gunakan awalan `checkpoint/` atau `test-pass/` secara konsisten agar tidak tertukar dengan versi rilis. Di tingkat akses 1 dan 2 (Bagian 8.2), pengguna yang membuat tag; bila tidak memungkinkan, checkpoint dicatat sebagai kode commit.
 3. **Release Candidate** disiapkan setelah kriteria rilis yang disepakati terpenuhi. Sertakan hasil tes yang sebenarnya (PASS / FAIL / NOT TESTED) beserta Tingkat Bukti-nya (Bagian 10.4), checksum artefak, dan bagian **"Keterbatasan yang Diketahui"** yang memuat semua Catatan Persetujuan yang masih terbuka (Bagian 2.5).
 4. **Rilis publik** mencakup pembuatan GitHub Release, distribusi aplikasi, publikasi ke toko aplikasi, dan merge ke branch utama. Semuanya butuh persetujuan eksplisit, kecuali kewenangan itu sudah diberikan secara tertulis.
 
@@ -350,6 +351,30 @@ Rincian:
 **Cara menulis kewenangan.** Kewenangan dicatat di bagian "Kewenangan versi dan rilis" pada `AGENTS.md` proyek, misalnya: "AI boleh membuat tag `checkpoint/*` setelah validator BERHASIL" atau "Merge ke `main` dan rilis publik selalu ditanyakan". Bila bagian itu kosong atau tidak ada, anggap semua kewenangan pada nomor 2–4 **belum** diberikan.
 
 *Kenapa:* memisahkan "menandai kemajuan" dari "menerbitkan ke publik" mencegah AI menganggap tes yang lulus sebagai izin untuk merilis.
+
+### 8.2 Tingkat akses AI ke GitHub
+
+GitHub sendiri gratis. Yang berbeda-beda adalah **kemampuan AI untuk masuk langsung ke GitHub**. Kemampuan ini bergantung pada alat AI dan paket langganannya, dan ketentuannya sering berubah. Workflow ini **tidak mensyaratkan** AI punya akses langsung.
+
+| Tingkat | Kondisi | Siapa mengurus GitHub |
+|---|---|---|
+| **1. Tanpa akses** | Chat AI biasa (termasuk versi gratis) yang tidak bisa membuka repositori | **Pengguna** mengunggah semua perubahan. AI menyiapkan file dan petunjuknya. |
+| **2. Hanya membaca** | Repositori dilampirkan atau disambungkan hanya untuk dibaca | AI membaca langsung; **pengguna** tetap yang mengunggah perubahan. |
+| **3. Bisa menulis** | Agen coding yang tersambung ke repositori dengan izin menulis | AI mengurus commit dan branch dalam batas Bagian 2.3 dan 8.1; pengguna yang menyetujui merge dan rilis. |
+
+**Semua aturan workflow berlaku sama di ketiga tingkat.** Yang berbeda hanya siapa yang mengetik ke GitHub. Di tingkat 1, kendali pengguna justru paling kuat: tidak ada perubahan yang masuk tanpa ia unggah sendiri.
+
+**Aturan tambahan di tingkat 1 dan 2** (pengguna yang mengunggah):
+
+1. **Minta versi terbaru dulu.** Di tingkat 1, sebelum mengubah sebuah file, minta pengguna melampirkan atau menempelkan isi file itu dari repositori. Jangan mengubah file dari ingatan percakapan; versi di repositori mungkin sudah berbeda, dan perubahan pengguna bisa tertimpa.
+2. **Berikan file utuh**, bukan potongan atau instruksi "ganti baris 20–30". Orang awam sulit menempel potongan dengan benar. Bila file terlalu panjang, perkecil cakupan perubahannya, jangan memotong isi file.
+3. **Sertakan daftar file** yang berubah, dengan lokasi lengkap dan statusnya: baru, diubah, atau dihapus. Penghapusan file tetap butuh persetujuan (Bagian 2.3 A) dan dilakukan sendiri oleh pengguna.
+4. **Sertakan pesan commit** siap tempel yang menjelaskan apa dan kenapa.
+5. **Jaga perubahan tetap kecil per unggahan:** satu perubahan yang utuh dan bisa dites, sebaiknya hanya beberapa file.
+6. **Sertakan pembaruan buku catatan** (`docs/KONTEKS_PROYEK.md`, dan `docs/PENGALAMAN.md` bila ada) dalam unggahan yang sama.
+7. **Tunjukkan cara mengunggah** bila pengguna belum terbiasa (lihat `panduan/github-dasar.md`).
+8. **Jangan menganggap sudah terunggah.** Minta pengguna mengonfirmasi, misalnya dengan menyebut kode commit (7 karakter pertama). Di tingkat 2, periksa sendiri isi repositorinya.
+9. **Checkpoint tanpa tag.** Bila pengguna tidak bisa membuat tag (misalnya hanya memakai situs GitHub), checkpoint dicatat sebagai **kode commit** di `docs/KONTEKS_PROYEK.md`. Kembali ke checkpoint dilakukan dengan mengunduh isi repositori pada commit itu (lihat `panduan/github-dasar.md`).
 
 ---
 

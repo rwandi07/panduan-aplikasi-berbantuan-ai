@@ -17,6 +17,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Checksum** | "Sidik jari" sebuah file berupa deretan huruf dan angka. Kalau isi file berubah sedikit saja, checksum-nya ikut berubah; berguna untuk memastikan file aplikasi yang dibagikan masih asli. |
 | **CHANGELOG** | Catatan riwayat perubahan per versi, ditulis supaya mudah dibaca manusia. |
 | **CI (Continuous Integration)** | Layanan yang otomatis menjalankan build dan tes setiap ada perubahan di repo, misalnya GitHub Actions. |
+| **Kode commit** | Kode unik setiap commit, biasanya ditampilkan 7 karakter pertamanya, misalnya `0529fbd`. Bisa dipakai sebagai penanda checkpoint bila tidak membuat tag. |
 | **Commit** | Satu entri bertanggal di buku catatan (repo): perubahan apa dan kenapa. |
 | **Dependensi** | Program atau library lain yang dibutuhkan aplikasimu untuk berjalan. |
 | **Discovery** | Tahap mencari dan mempelajari aplikasi atau proyek yang sudah ada sebelum membangun sendiri. |
@@ -61,6 +62,7 @@ Istilah yang sering muncul saat bekerja dengan AI, dijelaskan dalam satu atau du
 | **Set evaluasi** | Kumpulan contoh input tetap untuk menguji fitur AI setiap kali model atau prompt berubah. |
 | **Tag** | Penanda pada satu commit di repo. Dalam panduan ini ada dua jenis: tag checkpoint (`checkpoint/v0.3.0`) dan tag rilis (`v0.3.0`). |
 | **Tag checkpoint** | Penanda internal bahwa kriteria tes tertentu lulus pada commit itu, misalnya `checkpoint/v0.3.0`. Bukan rilis, dan bukan bukti aplikasi bebas masalah. |
+| **Tingkat akses AI ke GitHub** | Seberapa jauh AI bisa membuka repo-mu: 1 tanpa akses (kamu yang mengunggah), 2 hanya membaca, 3 bisa menulis. Panduan ini berlaku di semua tingkat. |
 | **Tingkat Bukti** | Ukuran kekuatan bukti dari 0 (baru klaim) sampai 4 (sudah dipakai sungguhan). Kepercayaan pada hasil kerja AI sebanding dengan tingkat ini. |
 | **UAT (User Acceptance Test)** | Tes oleh pemakai untuk memastikan aplikasi sesuai kebutuhan. Dalam panduan ini: checklist manual. |
 | **UI / UX** | UI: tampilan aplikasi. UX: pengalaman memakainya (mudah, nyaman, tidak membingungkan). |

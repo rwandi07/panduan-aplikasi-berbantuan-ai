@@ -14,7 +14,8 @@ Pelajari keduanya. Jangan mulai mengerjakan apa pun dulu.
 
 Setelah membaca, jawab singkat:
 1. Apa yang kamu pahami dari aturan kerja ini (maksimal 5 poin).
-2. Bagian mana yang bisa dan tidak bisa kamu lakukan dengan alat yang kamu punya sekarang.
+2. Bagian mana yang bisa dan tidak bisa kamu lakukan dengan alat yang kamu punya sekarang,
+   dan tingkat aksesmu ke GitHub (1: tanpa akses, 2: hanya membaca, 3: bisa menulis). Periksa, jangan menebak.
 3. Konfirmasi bahwa audit, pembangunan, dan perbaikan adalah kegiatan terpisah,
    dan perbaikan hanya dilakukan setelah saya setujui.
 
@@ -28,11 +29,27 @@ Baca AGENTS.md, docs/KONTEKS_PROYEK.md, dan docs/PENGALAMAN.md di repo ini,
 lalu jawab STATUS PROYEK. Jangan mengubah apa pun dulu.
 ```
 
-### Melanjutkan proyek (chat tanpa akses repo)
+### Melanjutkan proyek (chat tanpa akses repo, tingkat 1)
 
 ```text
 Saya melampirkan WORKFLOW_AI.md dan isi docs/KONTEKS_PROYEK.md dari proyek saya.
+Kamu tidak punya akses ke GitHub (tingkat 1); saya yang akan mengunggah.
 Pelajari, lalu jawab STATUS PROYEK. Jangan mengerjakan apa pun dulu.
+```
+
+### Meminta perubahan siap unggah (tingkat 1 dan 2)
+
+```text
+Ini isi terbaru file yang akan diubah: [lampirkan atau tempel].
+Setelah selesai, berikan: daftar file yang berubah (lokasi lengkap dan statusnya),
+isi file utuh untuk setiap file, pesan commit siap tempel, dan pembaruan KONTEKS_PROYEK.
+Jaga perubahannya kecil.
+```
+
+### Melaporkan bahwa sudah diunggah
+
+```text
+Sudah saya unggah. Kode commit-nya [7 karakter, misalnya 0529fbd].
 ```
 
 ### Menerapkan panduan ke aplikasi lama (Jalur Adopsi)

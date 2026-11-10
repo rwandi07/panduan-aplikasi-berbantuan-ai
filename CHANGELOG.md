@@ -2,6 +2,22 @@
 
 Format nomor versi: **besar.kecil**. Angka besar berubah bila cara kerja berubah mendasar; angka kecil untuk penambahan dan perbaikan.
 
+## v1.4 (10 November 2026)
+
+**Ringkasan sederhana:** panduan kini menegaskan bahwa **tidak perlu langganan AI berbayar**. GitHub gratis; kalau AI tidak bisa membuka GitHub langsung, pengguna yang mengunggah file yang disiapkan AI, dan semua aturan tetap berlaku.
+
+### Baru
+- **Tingkat akses AI ke GitHub** (`WORKFLOW_AI.md` Bagian 8.2, `panduan/github-dasar.md`): 1 tanpa akses, 2 hanya membaca, 3 bisa menulis. Semua aturan berlaku sama; bedanya hanya siapa yang mengunggah.
+- **Aturan untuk tingkat 1 dan 2:** minta versi file terbaru sebelum mengubah, berikan file utuh (bukan potongan), daftar file yang berubah, pesan commit siap tempel, perubahan kecil per unggahan, pembaruan buku catatan dalam unggahan yang sama, dan konfirmasi lewat kode commit.
+- **Checkpoint tanpa tag:** dicatat sebagai kode commit; cara kembali ke checkpoint lewat unduhan ZIP dari situs GitHub; cara membuat tag lewat GitHub Desktop.
+- **Langkah mengunggah lewat situs GitHub**: file baru, mengubah file, menghapus file.
+- Prompt baru untuk tingkat 1: melanjutkan proyek, meminta perubahan siap unggah, melaporkan kode commit.
+
+### Diubah
+- Pesan pembuka meminta AI menyebut tingkat aksesnya ke GitHub, dengan memeriksa, bukan menebak.
+- Profil Pengembang, `KONTEKS_PROYEK.md`, dan `AGENTS.md` mencatat tingkat akses AI.
+- Glosarium ditambah: kode commit, tingkat akses AI ke GitHub.
+
 ## v1.3 (10 November 2026)
 
 **Ringkasan sederhana:** panduan kini punya prinsip utama tentang kebebasan AI, kualitas bukti, dan keputusan yang dipahami manusia; batas tegas untuk pembayaran; cara menerapkan panduan pada aplikasi lama, kebiasaan mencatat pengalaman, aturan kapan memulai percakapan baru, kumpulan prompt siap salin, aturan tegas yang membedakan checkpoint dari rilis, dan subjudul "Human-Controlled AI Development Framework".
